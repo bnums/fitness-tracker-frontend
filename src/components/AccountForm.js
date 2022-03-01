@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { callApi } from "../api";
 
@@ -7,10 +7,20 @@ const AccountForm = ({ setToken, setUser }) => {
   let { method } = params;
   const title = method === "login" ? "Sign in" : "Register";
   const navigate = useNavigate();
+  const userRef = useRef();
+  const errRef = useRef();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
 
-  //! Implement a way to handle the different error cases.
+  useEffect(() => {
+    userRef.current.focus();
+  }, [method]);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [username, password]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -33,25 +43,37 @@ const AccountForm = ({ setToken, setUser }) => {
         localStorage.setItem("user", user.username);
       }
     } catch (error) {
+      setErrMsg(error.message);
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <section>
+      <p
+        ref={errRef}
+        className={errMsg ? "errmsg" : "offscreen"}
+        aria-live="assertive"
+      >
+        {errMsg}
+      </p>
       <h1>{title}</h1>
+
       <form className="account-form" onSubmit={handleSubmit}>
+        <label htmlFor="username">Username:</label>
         <input
           required
-          label="Username"
+          label="username"
+          ref={userRef}
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
         />
+        <label htmlFor="password">Password:</label>
         <input
           required
-          label="Username"
+          label="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
@@ -72,7 +94,7 @@ const AccountForm = ({ setToken, setUser }) => {
           )}
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -6,7 +6,7 @@ export const api = axios.create({
 });
 
 export const callApi = async ({ url, method, token, body }) => {
-  console.log({ url: `${API_URL}/api${url}`, method, token, body });
+  // console.log({ url: `${API_URL}/api${url}`, method, token, body });
   try {
     const options = {
       method: method ? method.toLowerCase() : "get",
@@ -20,6 +20,7 @@ export const callApi = async ({ url, method, token, body }) => {
     if (data.error) throw data.error;
     return data;
   } catch (error) {
-    throw error;
+    const errToThrow = error.response.data;
+    throw errToThrow;
   }
 };
