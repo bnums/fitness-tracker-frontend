@@ -1,18 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { callApi } from "../api";
-
-const Activities = () => {
-  const [activities, setActivities] = useState([]);
-
-  const fetchActivities = async () => {
-    const data = await callApi({ url: "/activities" });
-    setActivities(data);
-  };
-
-  useEffect(() => {
-    fetchActivities();
-  }, []);
-
+const Activities = ({ activities }) => {
   return (
     <>
       <h1>Activities Page</h1>
