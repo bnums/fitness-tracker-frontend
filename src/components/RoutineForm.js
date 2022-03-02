@@ -1,15 +1,17 @@
-const RoutineForm = ({ handleAdd, routine, setRoutine }) => {
-  function testHandle(e) {
-    e.preventDefault();
-    console.log(routine);
-  }
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+
+const RoutineForm = ({ handleAdd, routine, setRoutine, setErrMsg }) => {
+  useEffect(() => {
+    setErrMsg("");
+  }, [routine.name, routine.goal]);
+
   return (
-    <form className="routine-form" onSubmit={testHandle}>
+    <form className="routine-form" onSubmit={handleAdd}>
       <label>
         Name:
         <input
           value={routine.name}
-          placeholder="Routine Name"
           onChange={(e) => {
             setRoutine({ ...routine, name: e.target.value });
           }}
@@ -19,7 +21,6 @@ const RoutineForm = ({ handleAdd, routine, setRoutine }) => {
         Goal:
         <input
           value={routine.goal}
-          placeholder="Goal"
           onChange={(e) => {
             setRoutine({ ...routine, goal: e.target.value });
           }}

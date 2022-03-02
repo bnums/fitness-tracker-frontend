@@ -6,16 +6,18 @@ const AddRoutine = ({ token, user, setRoutines }) => {
   const [errMsg, setErrMsg] = useState("");
   const [routine, setRoutine] = useState(blankRoutine);
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
+    console.log(routine);
     try {
-      const { data } = callApi({
-        url: "routines",
+      const data = await callApi({
+        url: "/routines",
         method: "post",
-        body: { routine },
+        body: routine,
         token,
       });
-      setRoutine("");
+      console.log(data);
+      setRoutine(blankRoutine);
     } catch (error) {
       setErrMsg(error.message);
     }
@@ -23,11 +25,15 @@ const AddRoutine = ({ token, user, setRoutines }) => {
   return (
     <>
       <h3>AddRoutine</h3>
-      {/* <RoutineForm
+      <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+        {errMsg}
+      </p>
+      <RoutineForm
         handleAdd={handleAdd}
         routine={routine}
         setRoutine={setRoutine}
-      /> */}
+        setErrMsg={setErrMsg}
+      />
     </>
   );
 };

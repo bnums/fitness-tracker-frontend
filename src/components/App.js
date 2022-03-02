@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -71,9 +73,7 @@ function App() {
         />
         <Route
           path="/routines/:user"
-          element={
-            <UserRoutines user={user} token={token} setRoutines={setRoutines} />
-          }
+          element={<UserRoutines user={user} token={token} />}
         />
       </Routes>
     </div>
