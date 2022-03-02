@@ -2,6 +2,8 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { callApi } from "../api";
+
+// React components
 import Home from "./Home";
 import Navigation from "./Navigation";
 import Routines from "./Routines";
@@ -45,17 +47,17 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Navigation token={token} setToken={setToken} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path='account/:method'
+          path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route path='/routines' element={<Routines routines={routines} />} />
+        <Route path="/routines" element={<Routines routines={routines} />} />
         <Route
-          path='/activities'
+          path="/activities"
           element={<Activities activities={activities} />}
         />
       </Routes>
