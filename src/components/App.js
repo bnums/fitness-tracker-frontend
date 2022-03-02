@@ -33,22 +33,29 @@ function App() {
   };
 
   useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+      setUser(localStorage.getItem("user"));
+    }
+  }, []);
+
+  useEffect(() => {
     fetchRoutines();
     fetchActivities();
   }, []);
 
   return (
-    <div className="App">
-      <Navigation />
+    <div className='App'>
+      <Navigation token={token} setToken={setToken} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route
-          path="account/:method"
+          path='account/:method'
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route path="/routines" element={<Routines routines={routines} />} />
+        <Route path='/routines' element={<Routines routines={routines} />} />
         <Route
-          path="/activities"
+          path='/activities'
           element={<Activities activities={activities} />}
         />
       </Routes>
