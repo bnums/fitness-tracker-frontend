@@ -69,7 +69,7 @@ function App() {
           path="/activities"
           element={<Activities activities={activities} />}
         />
-        <Route path="/routines/:user" element={<UserRoutines />} />
+        <Route path="/routines/:user" element={<UserRoutines user={user} />} />
       </Routes>
     </div>
   );
