@@ -38,7 +38,7 @@ const AccountForm = ({ setToken, setUser }) => {
         setPassword("");
         setToken(token);
         setUser(user.username);
-        navigate(`/routines/${user.username}`); //todo make it so that once the user signs in, the Users' Routines will render up at the top first in a section that says My Routines before showing other public routines. Figure out a way to pagify it.
+        navigate(`/routines/${user.username}`);
         localStorage.setItem("token", token);
         localStorage.setItem("user", user.username);
       }
