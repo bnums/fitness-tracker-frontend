@@ -69,7 +69,12 @@ function App() {
           path="/activities"
           element={<Activities activities={activities} />}
         />
-        <Route path="/routines/:user" element={<UserRoutines user={user} />} />
+        <Route
+          path="/routines/:user"
+          element={
+            <UserRoutines user={user} token={token} setRoutines={setRoutines} />
+          }
+        />
       </Routes>
     </div>
   );

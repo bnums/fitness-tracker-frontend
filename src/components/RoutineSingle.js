@@ -1,7 +1,6 @@
 import RoutineActivity from "./RoutineActivity";
 
 const RoutineSingle = ({ routine }) => {
-  console.log(routine);
   return (
     <div className="routine card">
       <div id="routine-name">Routine Name: {routine.name} </div>
