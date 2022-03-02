@@ -15,11 +15,13 @@ const AccountForm = ({ setToken, setUser }) => {
 
   useEffect(() => {
     userRef.current.focus();
+    setUsername("");
+    setPassword("");
   }, [method]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [username, password]);
+  }, [username, password, method]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
