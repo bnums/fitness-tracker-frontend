@@ -1,23 +1,25 @@
 import { Link } from "react-router-dom";
 
-const Navigation = ({ token, setToken }) => {
+const Navigation = ({ user, setUser, token, setToken }) => {
   return (
-    <nav className='nav bar'>
-      <Link to='/'>Worqout</Link>
-      <Link to='/routines'>Routines</Link>
-      <Link to='/activities'>Activities</Link>
+    <nav className="nav bar">
+      <Link to="/">Worqout</Link>
+      {user ? <Link to={`/routines/${user}`}>My Routines</Link> : null}
+      <Link to="/routines">Routines</Link>
+      <Link to="/activities">Activities</Link>
       {token ? (
         <Link
-          to='/routines'
+          to="/routines"
           onClick={() => {
             setToken("");
-            localStorage.removeItem("token");
+            setUser("");
+            localStorage.clear();
           }}
         >
           Log Out
         </Link>
       ) : (
-        <Link to='/account/login'>Sign In/Register</Link>
+        <Link to="/account/login">Sign In/Register</Link>
       )}
     </nav>
   );

@@ -48,7 +48,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation token={token} setToken={setToken} />
+      <Navigation
+        token={token}
+        setToken={setToken}
+        user={user}
+        setUser={setUser}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
