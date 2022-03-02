@@ -9,6 +9,7 @@ import Navigation from "./Navigation";
 import Routines from "./Routines";
 import Activities from "./Activities";
 import AccountForm from "./AccountForm";
+import UserRoutines from "./UserRoutines";
 
 function App() {
   const [user, setUser] = useState("");
@@ -60,11 +61,15 @@ function App() {
           path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route path="/routines" element={<Routines routines={routines} />} />
+        <Route
+          path="/routines/public"
+          element={<Routines routines={routines} />}
+        />
         <Route
           path="/activities"
           element={<Activities activities={activities} />}
         />
+        <Route path="/routines/:user" element={<UserRoutines />} />
       </Routes>
     </div>
   );

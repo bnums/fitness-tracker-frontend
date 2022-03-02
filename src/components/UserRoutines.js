@@ -1,5 +1,9 @@
 const UserRoutines = () => {
-  return <div>UserRoutines</div>;
+  return (
+    <div>
+      <h1>My Routines</h1>
+    </div>
+  );
 };
 
 export default UserRoutines;

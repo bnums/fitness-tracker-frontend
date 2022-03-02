@@ -5,11 +5,11 @@ const Navigation = ({ user, setUser, token, setToken }) => {
     <nav className="nav bar">
       <Link to="/">Worqout</Link>
       {user ? <Link to={`/routines/${user}`}>My Routines</Link> : null}
-      <Link to="/routines">Routines</Link>
+      <Link to="/routines/public">Routines</Link>
       <Link to="/activities">Activities</Link>
       {token ? (
         <Link
-          to="/routines"
+          to="/routines/public"
           onClick={() => {
             setToken("");
             setUser("");
