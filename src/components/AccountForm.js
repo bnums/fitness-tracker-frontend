@@ -44,7 +44,6 @@ const AccountForm = ({ setToken, setUser }) => {
       }
     } catch (error) {
       setErrMsg(error.message);
-      console.log(error);
     }
   };
 
