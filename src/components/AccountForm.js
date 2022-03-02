@@ -33,7 +33,7 @@ const AccountForm = ({ setToken, setUser }) => {
         },
       });
 
-      if (user) {
+      if (token) {
         setUsername("");
         setPassword("");
         setToken(token);
@@ -53,33 +53,33 @@ const AccountForm = ({ setToken, setUser }) => {
       <p
         ref={errRef}
         className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
+        aria-live='assertive'
       >
         {errMsg}
       </p>
       <h1>{title}</h1>
 
-      <form className="account-form" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+      <form className='account-form' onSubmit={handleSubmit}>
+        <label htmlFor='username'>Username:</label>
         <input
           required
-          label="username"
+          label='username'
           ref={userRef}
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor='password'>Password:</label>
         <input
           required
-          label="password"
+          label='password'
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
-        <button type="submit">{title}</button>
+        <button type='submit'>{title}</button>
         <div>
           {method === "login" ? (
             <Link to={"/account/register"}>
