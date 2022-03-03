@@ -1,23 +1,22 @@
 import AddRoutine from "./AddRoutine";
 import RoutineSingle from "./RoutineSingle";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { callApi } from "../api";
 
 const UserRoutines = ({ user, token }) => {
   const [userRoutines, setUserRoutines] = useState([]);
 
-  const fetchUserRoutines = async () => {
-    try {
-      const data = await callApi({ url: `/routines/${user}`, token });
-      setUserRoutines(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchUserRoutines = async () => {
+      try {
+        const data = await callApi({ url: `/routines/${user}`, token });
+        setUserRoutines(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchUserRoutines();
-  }, []);
+  }, [setUserRoutines, token, user]);
 
   return (
     <div>
@@ -29,7 +28,9 @@ const UserRoutines = ({ user, token }) => {
       <div className="routines-cards">
         {userRoutines && userRoutines.length
           ? userRoutines.map((routine) => {
-              return <RoutineSingle key={routine.id} routine={routine} />;
+              return (
+                <RoutineSingle key={routine.id} routine={routine} user={user} />
+              );
             })
           : null}
       </div>

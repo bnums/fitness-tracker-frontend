@@ -1,6 +1,6 @@
 import RoutineActivity from "./RoutineActivity";
 
-const RoutineSingle = ({ routine }) => {
+const RoutineSingle = ({ routine, user }) => {
   return (
     <div className="routine-card">
       <div id="routine-name">{routine.name} </div>
@@ -11,6 +11,14 @@ const RoutineSingle = ({ routine }) => {
             return <RoutineActivity key={activity.id} activity={activity} />;
           })
         : null}
+      {user === routine.creatorName ? (
+        <button
+          className="edit-activity-card-button"
+          onClick={() => console.log("working")}
+        >
+          Edit
+        </button>
+      ) : null}
     </div>
   );
 };
