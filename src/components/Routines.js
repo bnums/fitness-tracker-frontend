@@ -1,13 +1,11 @@
+import RoutineSingle from "./RoutineSingle";
+
 const Routines = ({ routines }) => {
   return (
     <div>
-      <h1>Routines Page</h1>
+      <h1>Public Routines Page</h1>
       {routines.map((routine) => {
-        return (
-          <div key={routine.id}>
-            {routine.name} {routine.goal}
-          </div>
-        );
+        return <RoutineSingle key={routine.id} routine={routine} />;
       })}
     </div>
   );

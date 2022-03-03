@@ -1,12 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { callApi } from "../api";
+
+// React components
 import Home from "./Home";
 import Navigation from "./Navigation";
 import Routines from "./Routines";
 import Activities from "./Activities";
 import AccountForm from "./AccountForm";
+import UserRoutines from "./UserRoutines";
 
 function App() {
   const [user, setUser] = useState("");
@@ -45,18 +50,30 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
-      <Navigation token={token} setToken={setToken} />
+    <div className="App">
+      <Navigation
+        token={token}
+        setToken={setToken}
+        user={user}
+        setUser={setUser}
+      />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path='account/:method'
+          path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route path='/routines' element={<Routines routines={routines} />} />
         <Route
-          path='/activities'
+          path="/routines/public"
+          element={<Routines routines={routines} />}
+        />
+        <Route
+          path="/activities"
           element={<Activities activities={activities} />}
+        />
+        <Route
+          path="/routines/:user"
+          element={<UserRoutines user={user} token={token} />}
         />
       </Routes>
     </div>
