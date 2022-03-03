@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { callApi } from "../api";
 import ActivityForm from "./ActivityForm";
-const AddActivity = ({ token }) => {
+const AddActivity = ({ token, setErrMsg }) => {
   const blankActivity = { name: "", description: "" };
-  const [errMsg, setErrMsg] = useState("");
   const [activity, setActivity] = useState(blankActivity);
 
   const handleAdd = async (e) => {
@@ -25,9 +24,6 @@ const AddActivity = ({ token }) => {
   return (
     <>
       <h3>Add Activity</h3>
-      <p className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
-        {errMsg}
-      </p>
       <ActivityForm
         handleAdd={handleAdd}
         activity={activity}

@@ -69,7 +69,13 @@ function App() {
         />
         <Route
           path='/activities'
-          element={<Activities activities={activities} token={token} />}
+          element={
+            <Activities
+              activities={activities}
+              token={token}
+              fetchActivities={fetchActivities}
+            />
+          }
         />
         <Route
           path='/routines/:user'

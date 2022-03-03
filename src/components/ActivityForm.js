@@ -12,6 +12,7 @@ const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
         Name:
         <input
           value={activity.name}
+          required
           onChange={(e) => {
             setActivity({ ...activity, name: e.target.value });
           }}
@@ -21,6 +22,7 @@ const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
         Description:
         <input
           value={activity.description}
+          required
           onChange={(e) => {
             setActivity({ ...activity, description: e.target.value });
           }}
