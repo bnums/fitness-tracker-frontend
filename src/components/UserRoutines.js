@@ -26,7 +26,7 @@ const UserRoutines = ({ user, token }) => {
       <div>
         <AddRoutine token={token} />
       </div>
-      <div>
+      <div className="routines-cards">
         {userRoutines && userRoutines.length
           ? userRoutines.map((routine) => {
               return <RoutineSingle key={routine.id} routine={routine} />;
