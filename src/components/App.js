@@ -50,7 +50,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Navigation
         token={token}
         setToken={setToken}
@@ -58,21 +58,21 @@ function App() {
         setUser={setUser}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route
-          path="account/:method"
+          path='account/:method'
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
         <Route
-          path="/routines/public"
+          path='/routines/public'
           element={<Routines routines={routines} />}
         />
         <Route
-          path="/activities"
-          element={<Activities activities={activities} />}
+          path='/activities'
+          element={<Activities activities={activities} token={token} />}
         />
         <Route
-          path="/routines/:user"
+          path='/routines/:user'
           element={<UserRoutines user={user} token={token} />}
         />
       </Routes>
