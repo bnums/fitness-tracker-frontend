@@ -1,7 +1,7 @@
 import { callApi } from "../api";
 import { useState } from "react";
 
-const EditActivity = ({ activity, token, setErrMsg, fetchActivities }) => {
+const EditActivity = ({ activity, token, setErrMsg }) => {
   const [newActivity, setNewActivity] = useState(activity);
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -13,7 +13,6 @@ const EditActivity = ({ activity, token, setErrMsg, fetchActivities }) => {
         body: newActivity,
         token,
       });
-      fetchActivities();
     } catch (error) {
       setErrMsg(error.message);
     }
@@ -41,7 +40,6 @@ const EditActivity = ({ activity, token, setErrMsg, fetchActivities }) => {
       </label>
 
       <button>Save</button>
-      <button>Cancel Edit</button>
     </form>
   );
 };
