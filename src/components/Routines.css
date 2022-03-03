@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+.routines-header {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 700;
+  margin: 80px 32px 32px 32px;
+  text-align: center;
+}
+
+.routines-cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.routine-card {
+  margin: 16px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid #d0d0d0;
+  width: 300px;
+  min-height: fit-content;
+  height: 180px;
+  background-color: #fff;
+}
+
+#routine-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+#routine-creator {
+  font-family: "Karla", sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+#routine-goal {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.edit-activity-card-button {
+  margin: 24px 0px 0px 0px;
+  padding: 4px 16px;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #001626;
+  color: #fff;
+  border: none;
+}

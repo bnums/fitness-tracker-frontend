@@ -2,8 +2,8 @@ import RoutineActivity from "./RoutineActivity";
 
 const RoutineSingle = ({ routine }) => {
   return (
-    <div className="routine card">
-      <div id="routine-name">Routine Name: {routine.name} </div>
+    <div className="routine-card">
+      <div id="routine-name">{routine.name} </div>
       <div id="routine-creator">Created By: {routine.creatorName} </div>
       <div id="routine-goal">Goal: {routine.goal}</div>
       {routine.activities && routine.activities.length
