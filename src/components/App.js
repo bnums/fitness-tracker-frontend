@@ -8,14 +8,18 @@ import { callApi } from "../api";
 // React components
 import Home from "./Home";
 import Navigation from "./Navigation";
-import Routines from "./Routines";
-import Activities from "./Activities";
+import Routines from "./Routines/Routines";
+import Activities from "./Activities/Activities";
 import AccountForm from "./AccountForm";
-import UserRoutines from "./UserRoutines";
+import UserRoutines from "./Routines/UserRoutines";
+// import Test from "./Test";
+import AllRoutines from "./Routines/AllRoutines";
+import RoutineSingle from "./Routines/RoutineSingle";
 
 function App() {
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
+  const [routine, setRoutine] = useState({});
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
@@ -63,10 +67,28 @@ function App() {
           path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route
-          path="/routines/public"
-          element={<Routines routines={routines} user={user} />}
-        />
+        <Route path="/routines" element={<Routines />}>
+          <Route
+            path="public/all"
+            element={
+              <AllRoutines
+                routines={routines}
+                user={user}
+                setRoutine={setRoutine}
+              />
+            }
+          />
+          <Route
+            path=":routineId"
+            element={<RoutineSingle routine={routine} />}
+          />
+          <Route
+            path="user/:username"
+            element={
+              <UserRoutines user={user} token={token} setRoutine={setRoutine} />
+            }
+          />
+        </Route>
         <Route
           path="/activities"
           element={
@@ -76,10 +98,6 @@ function App() {
               fetchActivities={fetchActivities}
             />
           }
-        />
-        <Route
-          path="/routines/:user"
-          element={<UserRoutines user={user} token={token} />}
         />
       </Routes>
     </div>
