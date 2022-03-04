@@ -34,8 +34,17 @@
   font-size: 18px;
   line-height: 24px;
   font-weight: 600;
+  padding-left: 0px;
   padding-bottom: 8px;
+  border: none;
+  background-color: inherit;
 }
+
+#routine-name:hover {
+  font-weight: 720;
+  text-shadow: 1px 1px rgb(206, 206, 206);
+}
+
 #routine-creator {
   font-family: "Karla", sans-serif;
   font-size: 13px;

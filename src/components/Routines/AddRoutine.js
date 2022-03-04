@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { callApi } from "../api";
+import { callApi } from "../../api";
 import RoutineForm from "./RoutineForm";
 const AddRoutine = ({ token, user, setRoutines }) => {
   const blankRoutine = { name: "", goal: "", isPublic: false };
@@ -25,9 +25,7 @@ const AddRoutine = ({ token, user, setRoutines }) => {
   return (
     <>
       <h3>AddRoutine</h3>
-      <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
-        {errMsg}
-      </p>
+      <p aria-live="assertive">{errMsg}</p>
       <RoutineForm
         handleAdd={handleAdd}
         routine={routine}

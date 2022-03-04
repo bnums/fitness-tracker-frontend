@@ -40,7 +40,7 @@ const AccountForm = ({ setToken, setUser }) => {
         setPassword("");
         setToken(token);
         setUser(user.username);
-        navigate(`/routines/${user.username}`);
+        navigate(`/myroutines/${user.username}`);
         localStorage.setItem("token", token);
         localStorage.setItem("user", user.username);
       }

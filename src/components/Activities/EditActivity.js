@@ -1,4 +1,4 @@
-import { callApi } from "../api";
+import { callApi } from "../../api";
 import { useState } from "react";
 
 const EditActivity = ({ activity, token, setErrMsg }) => {
@@ -19,7 +19,7 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
   };
 
   return (
-    <form className='' onSubmit={handleEdit}>
+    <form className="" onSubmit={handleEdit}>
       <label>
         Name:
         <input
