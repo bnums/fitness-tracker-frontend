@@ -1,26 +1,25 @@
+import EditRoutineActivity from "./EditRoutineActivity";
 const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
   return (
     <>
       <p aria-live="assertive">{errMsg}</p>
+
       <form className="routine-form">
-        <label>
-          Name:
-          <input
-            value={editRoutine.name}
-            onChange={(e) => {
-              setEditRoutine({ ...editRoutine, name: e.target.value });
-            }}
-          />
-        </label>
-        <label>
-          Goal:
-          <input
-            value={editRoutine.goal}
-            onChange={(e) => {
-              setEditRoutine({ ...editRoutine, goal: e.target.value });
-            }}
-          />
-        </label>
+        <h3>Name and Goal:</h3>
+        <label>Name:</label>
+        <input
+          value={editRoutine.name}
+          onChange={(e) => {
+            setEditRoutine({ ...editRoutine, name: e.target.value });
+          }}
+        />
+        <label>Goal:</label>
+        <input
+          value={editRoutine.goal}
+          onChange={(e) => {
+            setEditRoutine({ ...editRoutine, goal: e.target.value });
+          }}
+        />
         <label>
           Public?
           <input
@@ -34,7 +33,6 @@ const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
           <input
             type="radio"
             name="isPublic"
-            defaultChecked
             onClick={() => {
               setEditRoutine({ ...editRoutine, isPublic: false });
             }}
@@ -42,6 +40,7 @@ const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
           No
         </label>
       </form>
+      <EditRoutineActivity />
     </>
   );
 };

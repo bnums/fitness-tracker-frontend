@@ -74,6 +74,7 @@ function App() {
           element={
             <PublicRoutines
               routines={routines}
+              activities={activities}
               user={user}
               token={token}
               fetchPublicRoutines={fetchPublicRoutines}

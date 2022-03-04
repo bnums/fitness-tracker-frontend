@@ -11,7 +11,9 @@ const Routines = ({ routines, user, token, fetch }) => {
 
   const handleEdit = async () => {
     try {
-      console.log(editRoutine);
+      if (!editRoutine.name || !editRoutine.goal) {
+        throw new Error("Routines must have a name and goal!");
+      }
       await callApi({
         url: `/routines/${editRoutine.id}`,
         method: "patch",
@@ -42,7 +44,10 @@ const Routines = ({ routines, user, token, fetch }) => {
         show={showEdit}
         title={editRoutine.name}
         onSubmit={handleEdit}
-        onClose={() => setShowEdit(false)}
+        onClose={() => {
+          setShowEdit(false);
+          setErrMsg("");
+        }}
       >
         <EditRoutine
           editRoutine={editRoutine}
