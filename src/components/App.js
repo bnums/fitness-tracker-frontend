@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,10 +7,12 @@ import { callApi } from "../api";
 // React components
 import Home from "./Home";
 import Navigation from "./Navigation";
-import Routines from "./Routines";
-import Activities from "./Activities";
+import PublicRoutines from "./Routines/PublicRoutines";
+import Activities from "./Activities/Activities";
 import AccountForm from "./AccountForm";
-import UserRoutines from "./UserRoutines";
+import UserRoutines from "./Routines/UserRoutines";
+import Footer from "./Footer";
+// import Test from "./Test";
 
 function App() {
   const [user, setUser] = useState("");
@@ -19,7 +20,7 @@ function App() {
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
-  const fetchRoutines = async () => {
+  const fetchPublicRoutines = async () => {
     try {
       const data = await callApi({ url: "/routines" });
       setRoutines(data);
@@ -45,12 +46,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchRoutines();
+    fetchPublicRoutines();
     fetchActivities();
   }, []);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Navigation
         token={token}
         setToken={setToken}
@@ -58,17 +59,31 @@ function App() {
         setUser={setUser}
       />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path='account/:method'
+          path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
         <Route
-          path='/routines/public'
-          element={<Routines routines={routines} />}
+          path="myroutines/:username"
+          element={
+            <UserRoutines user={user} token={token} activities={activities} />
+          }
         />
         <Route
-          path='/activities'
+          path="/routines/all"
+          element={
+            <PublicRoutines
+              routines={routines}
+              activities={activities}
+              user={user}
+              token={token}
+              fetchPublicRoutines={fetchPublicRoutines}
+            />
+          }
+        />
+        <Route
+          path="/activities"
           element={
             <Activities
               activities={activities}
@@ -77,11 +92,8 @@ function App() {
             />
           }
         />
-        <Route
-          path='/routines/:user'
-          element={<UserRoutines user={user} token={token} />}
-        />
       </Routes>
+      <Footer />
     </div>
   );
 }

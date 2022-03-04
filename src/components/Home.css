@@ -1,32 +1,200 @@
-body {
-  /* background-image: url("/img/hero-image.png"); */
-  background-size: cover;
-  background-color: #f5f5f5;
+.header-content {
+  margin-left: 6vw;
+  margin-top: 28vh;
 }
 
 .landing-page-header {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Karla", sans-serif;
   font-size: 54px;
-  line-height: 64px;
+  line-height: 60px;
   font-weight: 700;
-  margin: 80px 32px 32px 32px;
+  margin: 0px 0px 0px 24px;
   text-align: left;
+  max-width: 540px;
+  color: #000c23;
 }
 
 .landing-page-subhead {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  margin: 8px 0px 32px 24px;
+  text-align: left;
+  max-width: 500px;
+  color: #000c23;
 }
 
-.header-log-in-button {
-  margin: 24px 0px 0px 0px;
-  padding: 4px 16px;
+.header-sign-up-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  margin: 16px 0px 32px 24px;
+  text-decoration: none;
+}
+
+.popular-worqouts-container {
+  margin-top: 50vh;
+  margin-bottom: 96px;
+}
+
+.popular-worqouts-header {
+  font-family: "Karla", sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  margin: 0px 0px 48px 0px;
+  text-align: center;
+  text-decoration: none;
+  color: #000c23;
+}
+
+.all-popular-worqouts {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.popular-worqout-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.popular-worqout-img {
+  margin: 0px 16px;
+  width: 400px;
+  max-width: 400px;
+  border: 1px solid #d0d0d0;
+}
+
+.worqout-copy {
+  background-color: #fff;
+  width: 400px;
+  max-width: 400px;
+  margin: 0px 16px;
+  border: 1px solid #d0d0d0;
+}
+
+.popular-worqout-label {
+  margin: 16px 0px 0px 16px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  width: 380px;
+  max-width: 380px;
+  padding-left: 8px;
+  text-align: left;
+}
+
+.popular-worqout-description {
+  margin: 8px 16px 20px 16px;
   font-family: "Karla", sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  background-color: #fff;
-  color: #001626;
-  border: none;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  width: 360px;
+  max-width: 360px;
+  padding: 0px 8px 0px 8px;
 }
 
-.example-routines {
-  margin: 100px 0px;
+@media (max-width: 768px) {
+  .header-content {
+    margin-left: 24px;
+    margin-top: 96px;
+  }
+
+  .landing-page-header {
+    font-size: 40px;
+    line-height: 50px;
+    width: auto;
+    margin-left: 0px;
+    margin-right: 24px;
+  }
+
+  .landing-page-subhead {
+    margin: 8px 16px 32px 0px;
+    font-size: 18px;
+    line-height: 28px;
+    width: auto;
+    margin-right: 24px;
+  }
+
+  .header-sign-up-button {
+    margin: 16px 0px 32px 0px;
+  }
+
+  .popular-worqouts-container {
+    margin: 96px 24px;
+  }
+
+  .popular-worqouts-header {
+    font-family: "Karla", sans-serif;
+    font-size: 32px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 0px 0px 32px 0px;
+    text-align: center;
+    text-decoration: none;
+    color: #000c23;
+  }
+
+  .all-popular-worqouts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .popular-worqout-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .popular-worqout-img {
+    margin: 0px 16px;
+    width: 340px;
+    max-width: 340px;
+  }
+
+  .worqout-copy {
+    background-color: #fff;
+    width: 340px;
+    max-width: 340px;
+    margin: 0px 16px;
+  }
+
+  .popular-worqout-label {
+    margin: 16px 0px 0px 16px;
+    font-family: "Karla", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    width: 320px;
+    max-width: 320px;
+    padding-left: 8px;
+    text-align: left;
+  }
+
+  .popular-worqout-description {
+    margin: 8px 16px 20px 16px;
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    text-align: left;
+    width: 300px;
+    max-width: 300px;
+    padding: 0px 8px 0px 8px;
+  }
 }

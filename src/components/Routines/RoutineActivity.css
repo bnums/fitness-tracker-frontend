@@ -1,0 +1,87 @@
+.routine-activity {
+  padding: 14px 16px;
+  background-color: #eeeeee;
+  margin: 4px 4px 16px 4px;
+}
+
+.routine-activity-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.routine-activity-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  padding-bottom: 0px;
+}
+
+.chevron-icon {
+  max-height: 10px;
+}
+
+.routine-activity-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.routine-activity-description {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 300;
+  margin: 8px 0px 4px 0px;
+}
+
+.routine-activity-count {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  padding-bottom: 0px;
+}
+
+.routine-activity-duration {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.routine-activity-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.routine-activity-edit-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+.routine-activity-delete-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #001b50;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+}

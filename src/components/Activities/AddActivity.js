@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { callApi } from "../api";
+import { callApi } from "../../api";
 import ActivityForm from "./ActivityForm";
 const AddActivity = ({ token, setErrMsg }) => {
   const blankActivity = { name: "", description: "" };

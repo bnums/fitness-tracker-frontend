@@ -7,14 +7,15 @@ const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
   }, [activity.name, activity.goal]);
 
   return (
-    <form className='' onSubmit={handleAdd}>
+    <form className="" onSubmit={handleAdd}>
       <label>
         Name:
         <input
           value={activity.name}
           required
           onChange={(e) => {
-            setActivity({ ...activity, name: e.target.value });
+            setActivity({ ...activity, name: e.target.value.toLowerCase() });
+            console.log(activity.name);
           }}
         />
       </label>

@@ -1,0 +1,28 @@
+.user-routines-welcome {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  margin: 68px 0px 0px 0px;
+  text-align: center;
+  color: #000c23;
+}
+
+.user-routines-header {
+  font-family: "Karla", sans-serif;
+  font-size: 64px;
+  line-height: 74px;
+  font-weight: 700;
+  margin: 8px 0px 32px 0px;
+  text-align: center;
+  color: #000c23;
+}
+
+.user-routines-cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 96px;
+}
