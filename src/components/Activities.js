@@ -3,6 +3,7 @@ import AddActivity from "./AddActivity";
 import EditActivity from "./EditActivity";
 import "./Activities.css";
 import { useEffect, useState } from "react";
+import Footer from "./Footer.js";
 
 const Activities = ({ activities, token, fetchActivities }) => {
   const [errMsg, setErrMsg] = useState("");
@@ -12,7 +13,7 @@ const Activities = ({ activities, token, fetchActivities }) => {
 
   return (
     <>
-      <h1 className='activities-header'>Activities</h1>
+      <div className='activities-header'>Activities</div>
       <p className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
         {errMsg}
       </p>
@@ -40,6 +41,7 @@ const Activities = ({ activities, token, fetchActivities }) => {
           );
         })}
       </div>
+      <Footer />
     </>
   );
 };

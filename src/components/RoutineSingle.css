@@ -1,0 +1,68 @@
+.routines-cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 96px;
+}
+
+.routine-card {
+  margin: 16px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid #d0d0d0;
+  width: 400px;
+  min-height: fit-content;
+  height: fit-content;
+  min-height: 300px;
+  background-color: #fff;
+}
+
+.header-copy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.routine-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  color: #000c23;
+}
+
+.username {
+  text-transform: uppercase;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  color: #33536a;
+}
+
+.description {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  margin-bottom: 22px;
+  color: #000c23;
+}
+
+.add-routine-activity {
+  margin-top: 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}

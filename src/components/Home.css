@@ -1,23 +1,16 @@
-body {
-  background-image: url("/src/components/img/hero-image.png");
-  background-size: 100%;
-  background-color: #ccd2de;
-  background-repeat: no-repeat;
-}
-
 .header-content {
   margin-left: 6vw;
-  margin-top: 24vh;
+  margin-top: 28vh;
 }
 
 .landing-page-header {
   font-family: "Karla", sans-serif;
-  font-size: 64px;
-  line-height: 74px;
+  font-size: 54px;
+  line-height: 60px;
   font-weight: 700;
   margin: 0px 0px 0px 24px;
   text-align: left;
-  max-width: 500px;
+  max-width: 540px;
   color: #000c23;
 }
 
@@ -32,7 +25,7 @@ body {
   color: #000c23;
 }
 
-.header-log-in-button {
+.header-sign-up-button {
   padding: 6px 24px;
   font-family: "Karla", sans-serif;
   font-size: 18px;
@@ -43,6 +36,7 @@ body {
   display: flex;
   align-self: left;
   margin: 16px 0px 32px 24px;
+  text-decoration: none;
 }
 
 .popular-worqouts-container {
@@ -53,7 +47,7 @@ body {
 .popular-worqouts-header {
   font-family: "Karla", sans-serif;
   font-size: 32px;
-  line-height: 30px;
+  line-height: 40px;
   font-weight: 700;
   margin: 0px 0px 48px 0px;
   text-align: center;
@@ -78,6 +72,7 @@ body {
   margin: 0px 16px;
   width: 400px;
   max-width: 400px;
+  border: 1px solid #d0d0d0;
 }
 
 .worqout-copy {
@@ -85,6 +80,7 @@ body {
   width: 400px;
   max-width: 400px;
   margin: 0px 16px;
+  border: 1px solid #d0d0d0;
 }
 
 .popular-worqout-label {
@@ -118,20 +114,22 @@ body {
   }
 
   .landing-page-header {
-    margin: 0px;
     font-size: 40px;
     line-height: 50px;
-    max-width: 300px;
+    width: auto;
+    margin-left: 0px;
+    margin-right: 24px;
   }
 
   .landing-page-subhead {
     margin: 8px 16px 32px 0px;
     font-size: 18px;
     line-height: 28px;
-    max-width: 300px;
+    width: auto;
+    margin-right: 24px;
   }
 
-  .header-log-in-button {
+  .header-sign-up-button {
     margin: 16px 0px 32px 0px;
   }
 
@@ -159,20 +157,20 @@ body {
   .popular-worqout-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
     margin-bottom: 48px;
   }
 
   .popular-worqout-img {
     margin: 0px 16px;
-    width: 380px;
-    max-width: 380px;
+    width: 340px;
+    max-width: 340px;
   }
 
   .worqout-copy {
     background-color: #fff;
-    width: 380px;
-    max-width: 380px;
+    width: 340px;
+    max-width: 340px;
     margin: 0px 16px;
   }
 
@@ -182,8 +180,8 @@ body {
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
-    width: 340px;
-    max-width: 340px;
+    width: 320px;
+    max-width: 320px;
     padding-left: 8px;
     text-align: left;
   }
@@ -195,8 +193,8 @@ body {
     line-height: 22px;
     font-weight: 400;
     text-align: left;
-    width: 340px;
-    max-width: 340px;
+    width: 300px;
+    max-width: 300px;
     padding: 0px 8px 0px 8px;
   }
 }

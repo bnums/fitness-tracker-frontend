@@ -3,18 +3,25 @@ import pr1 from "./img/pr1.png";
 import pr2 from "./img/pr2.png";
 import pr3 from "./img/pr3.png";
 import Footer from "./Footer.js";
+import { Link } from "react-router-dom";
 
 const Home = ({ token }) => {
   return (
     <>
       <div className='header-content'>
-        <div className='landing-page-header'>Customizable Fitness Builder</div>
+        <div className='landing-page-header'>
+          Personalize Fitness in a Heartbeat
+        </div>
         <div className='landing-page-subhead'>
-          Reach your fitness goals with any of our existing routines and
-          activities or curate your own.
+          Worqout allows you to easily customize fitness routines to fit your
+          needs. Not sure where to start? Select and edit any of our existing
+          routines and activities to help you reach your fitness goals.
         </div>
         {token ? null : (
-          <button className='header-log-in-button'>Log In</button>
+          <Link to='/account/register'>
+            {" "}
+            <button className='header-sign-up-button'>Sign Up</button>
+          </Link>
         )}
       </div>
       <div className='popular-worqouts-container'>
