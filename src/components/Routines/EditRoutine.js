@@ -1,4 +1,4 @@
-// import EditRoutineActivity from "./EditRoutineActivity";
+import AddRoutineActivity from "./AddRoutineActivity";
 const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
   return (
     <>
@@ -40,7 +40,7 @@ const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
           No
         </label>
       </form>
-      {/* <EditRoutineActivity /> */}
+      <AddRoutineActivity />
     </>
   );
 };

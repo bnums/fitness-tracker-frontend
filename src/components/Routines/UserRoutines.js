@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import AllRoutines from "./AllRoutines";
 import { useEffect, useState } from "react";
 import { callApi } from "../../api";
 import Routines from "./Routines";
@@ -47,9 +46,9 @@ const UserRoutines = ({ token, user, activities }) => {
   return (
     <>
       <header>
-        <div className='user-routines-welcome'>Welcome {user}!</div>
-        <div className='user-routines-header'>Your Routines</div>
-        <button className='add-routine-btn' onClick={() => setShowAdd(true)}>
+        <div className="user-routines-welcome">Welcome {user}!</div>
+        <div className="user-routines-header">Your Routines</div>
+        <button className="add-routine-btn" onClick={() => setShowAdd(true)}>
           Add A New Routine +
         </button>
       </header>

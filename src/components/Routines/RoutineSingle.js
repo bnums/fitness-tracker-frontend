@@ -12,7 +12,6 @@ const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
               return <RoutineActivity key={activity.id} activity={activity} />;
             })
           : null}
-        <div className="add-routine-activity">Add Routine Activity +</div>
         {user === routine.creatorName ? (
           <button
             className="edit-activity-card-button"
