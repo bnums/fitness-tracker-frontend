@@ -1,4 +1,29 @@
-const AllRoutines = ({ routines, user }) => {
+import Modal from "../Modal";
+import EditRoutine from "./EditRoutine";
+import { useState } from "react";
+import { callApi } from "../../api";
+
+const AllRoutines = ({ routines, user, token, fetch }) => {
+  const [showEdit, setShowEdit] = useState(false);
+  const [editRoutine, setEditRoutine] = useState({});
+  const [errMsg, setErrMsg] = useState("");
+
+  const handleEdit = async () => {
+    try {
+      console.log(editRoutine);
+      await callApi({
+        url: `/routines/${editRoutine.id}`,
+        method: "patch",
+        body: editRoutine,
+        token,
+      });
+      setShowEdit(false);
+      fetch();
+    } catch (error) {
+      setErrMsg(error.message);
+    }
+  };
+
   return (
     <div className="routines-cards">
       {routines.map((routine) => {
@@ -20,7 +45,15 @@ const AllRoutines = ({ routines, user }) => {
             {user === routine.creatorName ? (
               <button
                 className="edit-activity-card-button"
-                onClick={() => console.log("working")}
+                onClick={() => {
+                  setShowEdit(true);
+                  setEditRoutine({
+                    id: routine.id,
+                    name: routine.name,
+                    goal: routine.goal,
+                    isPublic: routine.isPublic,
+                  });
+                }}
               >
                 Edit
               </button>
@@ -28,6 +61,18 @@ const AllRoutines = ({ routines, user }) => {
           </div>
         );
       })}
+      <Modal
+        show={showEdit}
+        title={editRoutine.name}
+        onSubmit={handleEdit}
+        onClose={() => setShowEdit(false)}
+      >
+        <EditRoutine
+          editRoutine={editRoutine}
+          setEditRoutine={setEditRoutine}
+          errMsg={errMsg}
+        />
+      </Modal>
     </div>
   );
 };

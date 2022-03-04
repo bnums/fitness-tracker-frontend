@@ -65,11 +65,20 @@ function App() {
         />
         <Route
           path="myroutines/:username"
-          element={<UserRoutines user={user} token={token} />}
+          element={
+            <UserRoutines user={user} token={token} activities={activities} />
+          }
         />
         <Route
           path="/routines/all"
-          element={<Routines routines={routines} user={user} token={token} />}
+          element={
+            <Routines
+              routines={routines}
+              user={user}
+              token={token}
+              fetchPublicRoutines={fetchPublicRoutines}
+            />
+          }
         />
         <Route
           path="/activities"

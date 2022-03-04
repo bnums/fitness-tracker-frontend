@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import AllRoutines from "./AllRoutines";
 import { useEffect, useState } from "react";
 import { callApi } from "../../api";
@@ -5,7 +6,7 @@ import AllRoutines from "./AllRoutines";
 import AddRoutine from "./AddRoutine";
 import Modal from "../Modal";
 
-const UserRoutines = ({ token, user }) => {
+const UserRoutines = ({ token, user, activities }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [userRoutines, setUserRoutines] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
@@ -41,7 +42,7 @@ const UserRoutines = ({ token, user }) => {
 
   useEffect(() => {
     fetchUserRoutines();
-  });
+  }, [user]);
 
   return (
     <>
@@ -54,7 +55,14 @@ const UserRoutines = ({ token, user }) => {
       {isLoading ? (
         <div>Loading</div>
       ) : (
-        <AllRoutines routines={userRoutines} user={user} token={token} />
+        <AllRoutines
+          routines={userRoutines}
+          user={user}
+          token={token}
+          routine={routine}
+          setRoutine={setRoutine}
+          fetch={fetchUserRoutines}
+        />
       )}
       <Modal
         show={showAdd}
