@@ -32,7 +32,7 @@
 .username {
   text-transform: uppercase;
   font-family: "Karla", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
   font-weight: 700;
   padding-bottom: 16px;
@@ -57,4 +57,35 @@
   text-align: left;
   text-decoration: none;
   color: #001b50;
+}
+
+.routine-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit-routine-card-button {
+  margin: 24px 0px 0px 0px;
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+}
+
+.delete-routine-card-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #001b50;
+  border: 1px solid #d0d0d0;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
 }

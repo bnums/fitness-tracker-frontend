@@ -46,9 +46,9 @@ const UserRoutines = ({ token, user, activities }) => {
   return (
     <>
       <header>
-        <div className="user-routines-welcome">Welcome {user}!</div>
-        <div className="user-routines-header">Your Routines</div>
-        <button className="add-routine-btn" onClick={() => setShowAdd(true)}>
+        <div className='user-routines-welcome'>Welcome {user}!</div>
+        <div className='user-routines-header'>My Routines</div>
+        <button className='add-routine-btn' onClick={() => setShowAdd(true)}>
           Add A New Routine +
         </button>
       </header>
