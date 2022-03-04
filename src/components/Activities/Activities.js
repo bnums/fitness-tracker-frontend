@@ -4,6 +4,8 @@ import EditActivity from "./EditActivity";
 import "./Activities.css";
 import { useEffect, useState } from "react";
 import Footer from "../Footer.js";
+import Modal from "../Modal";
+import { callApi } from "../../api";
 
 const Activities = ({ activities, token, fetchActivities }) => {
   const [errMsg, setErrMsg] = useState("");
@@ -11,29 +13,49 @@ const Activities = ({ activities, token, fetchActivities }) => {
     fetchActivities();
   }, [activities, fetchActivities]);
 
+  const [showEdit, setShowEdit] = useState(false);
+  const [newActivity, setNewActivity] = useState();
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    console.log(newActivity);
+    try {
+      await callApi({
+        url: `/activities/${newActivity.id}`,
+        method: `PATCH`,
+        body: newActivity,
+        token,
+      });
+    } catch (error) {
+      setErrMsg(error.message);
+    }
+  };
+
   return (
     <>
-      <h1 className="activities-header">Activities</h1>
-      <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+      <h1 className='activities-header'>Activities</h1>
+      <p className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
         {errMsg}
       </p>
       <div>
         {token ? <AddActivity token={token} setErrMsg={setErrMsg} /> : null}
       </div>
-      <div className="activities-cards">
+      <div className='activities-cards'>
         {activities.map((activity) => {
           return (
-            <div className="activity-card" key={activity.id}>
-              <div className="activity-name">{activity.name}</div>
-              <div className="activity-description">{activity.description}</div>
-              <EditActivity
-                activity={activity}
-                setErrMsg={setErrMsg}
-                token={token}
-              />
+            <div className='activity-card' key={activity.id}>
+              <div className='activity-name'>{activity.name}</div>
+              <div className='activity-description'>{activity.description}</div>
               <button
-                className="edit-activity-card-button"
-                onClick={() => console.log("working")}
+                className='edit-activity-card-button'
+                onClick={() => {
+                  setShowEdit(true);
+                  setNewActivity({
+                    id: activity.id,
+                    name: activity.name,
+                    description: activity.description,
+                  });
+                }}
               >
                 Edit
               </button>
@@ -41,7 +63,21 @@ const Activities = ({ activities, token, fetchActivities }) => {
           );
         })}
       </div>
-      <Footer />
+      <Modal
+        title={newActivity.name}
+        show={showEdit}
+        onSubmit={handleEdit}
+        onClose={() => {
+          setShowEdit(false);
+          setErrMsg("");
+        }}
+      >
+        <EditActivity
+          newActivity={newActivity}
+          setNewActivity={setNewActivity}
+          setErrMsg={setErrMsg}
+        />
+      </Modal>
     </>
   );
 };
