@@ -5,6 +5,7 @@ import { callApi } from "../../api";
 import Routines from "./Routines";
 import AddRoutine from "./AddRoutine";
 import Modal from "../Modal";
+import "./UserRoutines.css";
 
 const UserRoutines = ({ token, user, activities }) => {
   const [userRoutines, setUserRoutines] = useState([]);
@@ -45,9 +46,10 @@ const UserRoutines = ({ token, user, activities }) => {
 
   return (
     <>
-      <header className="routines-header">
-        <h1>{user}'s Routines</h1>
-        <button className="add-routine-btn" onClick={() => setShowAdd(true)}>
+      <header>
+        <div className='user-routines-welcome'>Welcome {user}!</div>
+        <div className='user-routines-header'>Your Routines</div>
+        <button className='add-routine-btn' onClick={() => setShowAdd(true)}>
           Add A New Routine +
         </button>
       </header>

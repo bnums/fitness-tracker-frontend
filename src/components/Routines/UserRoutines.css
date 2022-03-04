@@ -1,4 +1,5 @@
 .user-routines-welcome {
+  text-transform: capitalize;
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 22px;
