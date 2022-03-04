@@ -19,7 +19,7 @@ function App() {
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
-  const fetchRoutines = async () => {
+  const fetchPublicRoutines = async () => {
     try {
       const data = await callApi({ url: "/routines" });
       setRoutines(data);
@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchRoutines();
+    fetchPublicRoutines();
     fetchActivities();
   }, []);
 
