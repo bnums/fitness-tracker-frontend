@@ -23,34 +23,34 @@
   text-align: left;
   border: 1px solid #d0d0d0;
   width: 300px;
-  min-height: fit-content;
-  height: 180px;
+  min-height: 200px;
+  height: fit-content;
   background-color: #fff;
 }
 
 .activity-name {
   text-transform: capitalize;
   font-family: "Karla", sans-serif;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 32px;
   font-weight: 600;
   padding-bottom: 8px;
 }
 
 .activity-description {
   font-family: "Karla", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 22px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .edit-activity-card-button {
   margin: 24px 0px 0px 0px;
-  padding: 4px 16px;
+  padding: 6px 24px;
   font-family: "Karla", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  background-color: #001626;
+  background-color: #001b50;
   color: #fff;
   border: none;
 }

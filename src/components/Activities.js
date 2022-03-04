@@ -31,12 +31,7 @@ const Activities = ({ activities, token, fetchActivities }) => {
                 setErrMsg={setErrMsg}
                 token={token}
               />
-              <button
-                className='edit-activity-card-button'
-                onClick={() => console.log("working")}
-              >
-                Edit
-              </button>
+              <button className='edit-activity-card-button'>Edit</button>
             </div>
           );
         })}

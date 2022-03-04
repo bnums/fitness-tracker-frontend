@@ -4,10 +4,8 @@ import "./RoutineSingle.css";
 const RoutineSingle = ({ routine }) => {
   return (
     <div className='routine-card'>
-      <div className='header-copy'>
-        <div className='routine-name'>{routine.name} </div>
-        <div className='username'>{routine.creatorName} </div>
-      </div>
+      <div className='routine-name'>{routine.name} </div>
+      <div className='username'>Created By {routine.creatorName} </div>
       <div className='description'>{routine.goal}</div>
 
       {routine.activities && routine.activities.length

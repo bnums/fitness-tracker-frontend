@@ -7,7 +7,7 @@ const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
   }, [activity.name, activity.goal]);
 
   return (
-    <form className='' onSubmit={handleAdd}>
+    <form onSubmit={handleAdd}>
       <label>
         Name:
         <input

@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { callApi } from "../api";
+import "./AccountForm.css";
 
 const AccountForm = ({ setToken, setUser }) => {
   const params = useParams();
   let { method } = params;
-  const title = method === "login" ? "Sign in" : "Register";
+  const title = method === "login" ? "Log In" : "Register";
   const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
@@ -50,52 +51,70 @@ const AccountForm = ({ setToken, setUser }) => {
   };
 
   return (
-    <section>
-      <p
-        ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
-      <h1>{title}</h1>
+    <div className='account-form-container'>
+      <section className='account-form'>
+        <div className='account-form-content'>
+          <div className='account-form-header'>{title}</div>
 
-      <form className="account-form" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          required
-          label="username"
-          ref={userRef}
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          required
-          label="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button type="submit">{title}</button>
-        <div>
-          {method === "login" ? (
-            <Link to={"/account/register"}>
-              {" "}
-              Not a member yet? Register Now!
-            </Link>
-          ) : (
-            <Link to={"/account/login"}>
-              {" "}
-              Already have an account? Click here to log in!
-            </Link>
-          )}
+          <form onSubmit={handleSubmit}>
+            <label htmlFor='username' className='account-form-username'>
+              Username:
+            </label>
+            <input
+              required
+              label='username'
+              ref={userRef}
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <label htmlFor='password' className='account-form-password'>
+              Password:
+            </label>
+            <input
+              required
+              label='password'
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <div className='err-msg'>
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live='assertive'
+              >
+                {errMsg}
+              </p>
+            </div>
+            <button className='account-form-button' type='submit'>
+              {title}
+            </button>
+            <div>
+              {method === "login" ? (
+                <div>
+                  Not a member yet?
+                  <Link
+                    className='log-in-path-to-register'
+                    to={"/account/register"}
+                  >
+                    {" "}
+                    Register Now!
+                  </Link>
+                </div>
+              ) : (
+                <Link to={"/account/login"}>
+                  {" "}
+                  Already have an account? Click here to log in!
+                </Link>
+              )}
+            </div>
+          </form>
         </div>
-      </form>
-    </section>
+      </section>
+    </div>
   );
 };
 

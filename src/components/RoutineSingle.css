@@ -19,21 +19,13 @@
   background-color: #fff;
 }
 
-.header-copy {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
 .routine-name {
   text-transform: capitalize;
   font-family: "Karla", sans-serif;
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
   color: #000c23;
 }
 
@@ -43,7 +35,7 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 700;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   color: #33536a;
 }
 
@@ -51,7 +43,7 @@
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 26px;
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 22px;
   color: #000c23;
 }

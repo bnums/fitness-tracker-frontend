@@ -1,0 +1,70 @@
+.account-form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.account-form {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 96px 0px 0px 0px;
+  width: 600px;
+}
+
+.account-form-content {
+  background-color: #ffffff;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.account-form-header {
+  font-family: "Karla", sans-serif;
+  font-size: 32px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0px 0px 24px 0px;
+}
+
+.account-form-username {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 0px 8px 0px 0px;
+}
+
+.account-form-password {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 0px 8px 0px 0px;
+}
+
+.err-msg {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 0px 8px 0px 0px;
+}
+
+.account-form-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+  width: fit-content;
+}
+
+.account-form-path-to-register {
+}
