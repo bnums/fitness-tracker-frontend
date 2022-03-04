@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { callApi } from "../../api";
 import RoutineForm from "./RoutineForm";
-const AddRoutine = ({ token, user, setRoutines }) => {
+const AddRoutine = ({ token, user, setRoutines, setShowAdd }) => {
   const blankRoutine = { name: "", goal: "", isPublic: false };
   const [errMsg, setErrMsg] = useState("");
   const [routine, setRoutine] = useState(blankRoutine);
@@ -17,6 +17,7 @@ const AddRoutine = ({ token, user, setRoutines }) => {
         token,
       });
       console.log(data);
+      setShowAdd(false);
       setRoutine(blankRoutine);
     } catch (error) {
       setErrMsg(error.message);
@@ -24,7 +25,6 @@ const AddRoutine = ({ token, user, setRoutines }) => {
   };
   return (
     <>
-      <h3>AddRoutine</h3>
       <p aria-live="assertive">{errMsg}</p>
       <RoutineForm
         handleAdd={handleAdd}
