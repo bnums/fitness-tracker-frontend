@@ -3,7 +3,7 @@ import AddActivity from "./AddActivity";
 import EditActivity from "./EditActivity";
 import "./Activities.css";
 import { useEffect, useState } from "react";
-import Footer from "./Footer.js";
+import Footer from "../Footer.js";
 
 const Activities = ({ activities, token, fetchActivities }) => {
   const [errMsg, setErrMsg] = useState("");

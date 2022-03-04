@@ -20,15 +20,11 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
   };
 
   return (
-<<<<<<< HEAD:src/components/EditActivity.js
-    <form onSubmit={handleEdit}>
-=======
     <form className="" onSubmit={handleEdit}>
->>>>>>> my-routines-tab:src/components/Activities/EditActivity.js
       <label>
-        <div className='edit-activity-label'>Activity Name:</div>
+        <div className="edit-activity-label">Activity Name:</div>
         <input
-          className='edit-activity-input'
+          className="edit-activity-input"
           value={newActivity.name}
           onChange={(e) => {
             setNewActivity({ ...newActivity, name: e.target.value });
@@ -36,9 +32,9 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
         />
       </label>
       <label>
-        <div className='edit-activity-label'>Description:</div>
+        <div className="edit-activity-label">Description:</div>
         <input
-          className='edit-activity-input'
+          className="edit-activity-input"
           value={newActivity.description}
           onChange={(e) => {
             setNewActivity({ ...newActivity, description: e.target.value });
@@ -46,7 +42,7 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
         />
       </label>
 
-      <button className='edit-activity-save-button'>Save</button>
+      <button className="edit-activity-save-button">Save</button>
     </form>
   );
 };

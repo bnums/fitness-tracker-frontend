@@ -7,11 +7,7 @@ const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
   }, [activity.name, activity.goal]);
 
   return (
-<<<<<<< HEAD:src/components/ActivityForm.js
-    <form onSubmit={handleAdd}>
-=======
     <form className="" onSubmit={handleAdd}>
->>>>>>> my-routines-tab:src/components/Activities/ActivityForm.js
       <label>
         Name:
         <input
