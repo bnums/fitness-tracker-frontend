@@ -18,6 +18,9 @@
 .modal-header,
 .modal-footer {
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-title {
@@ -35,8 +38,9 @@
   border-bottom: 1px solid #eee;
 }
 
-.modal-close {
-  margin: 24px 0px 0px 0px;
+.modal-close,
+.modal-submit {
+  margin: 10px;
   padding: 4px 16px;
   font-family: "Karla", sans-serif;
   font-size: 14px;
@@ -44,4 +48,8 @@
   background-color: #818181;
   color: #fff;
   border: none;
+}
+
+.modal-submit {
+  background-color: #001626;
 }

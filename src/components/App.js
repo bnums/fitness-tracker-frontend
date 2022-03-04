@@ -7,7 +7,7 @@ import { callApi } from "../api";
 // React components
 import Home from "./Home";
 import Navigation from "./Navigation";
-import Routines from "./Routines/Routines";
+import PublicRoutines from "./Routines/PublicRoutines";
 import Activities from "./Activities/Activities";
 import AccountForm from "./AccountForm";
 import UserRoutines from "./Routines/UserRoutines";
@@ -72,7 +72,7 @@ function App() {
         <Route
           path="/routines/all"
           element={
-            <Routines
+            <PublicRoutines
               routines={routines}
               user={user}
               token={token}

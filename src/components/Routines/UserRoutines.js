@@ -2,12 +2,11 @@
 // import AllRoutines from "./AllRoutines";
 import { useEffect, useState } from "react";
 import { callApi } from "../../api";
-import AllRoutines from "./AllRoutines";
+import Routines from "./Routines";
 import AddRoutine from "./AddRoutine";
 import Modal from "../Modal";
 
 const UserRoutines = ({ token, user, activities }) => {
-  const [isLoading, setIsLoading] = useState(true);
   const [userRoutines, setUserRoutines] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
   const blankRoutine = { name: "", goal: "", isPublic: false };
@@ -17,7 +16,6 @@ const UserRoutines = ({ token, user, activities }) => {
   const fetchUserRoutines = async () => {
     try {
       const data = await callApi({ url: `/routines/${user}`, token });
-      setIsLoading(false);
       setUserRoutines(data);
     } catch (error) {
       console.error(error);
@@ -35,6 +33,7 @@ const UserRoutines = ({ token, user, activities }) => {
       setShowAdd(false);
       setErrMsg("");
       setRoutine(blankRoutine);
+      fetchUserRoutines();
     } catch (error) {
       setErrMsg(error.message);
     }
@@ -42,7 +41,7 @@ const UserRoutines = ({ token, user, activities }) => {
 
   useEffect(() => {
     fetchUserRoutines();
-  }, [user]);
+  });
 
   return (
     <>
@@ -52,18 +51,14 @@ const UserRoutines = ({ token, user, activities }) => {
           Add A New Routine +
         </button>
       </header>
-      {isLoading ? (
-        <div>Loading</div>
-      ) : (
-        <AllRoutines
+      {userRoutines ? (
+        <Routines
           routines={userRoutines}
           user={user}
           token={token}
-          routine={routine}
-          setRoutine={setRoutine}
           fetch={fetchUserRoutines}
         />
-      )}
+      ) : null}
       <Modal
         show={showAdd}
         title={"Add A New Routine"}

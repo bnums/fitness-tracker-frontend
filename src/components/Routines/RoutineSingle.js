@@ -1,27 +1,37 @@
-import RoutineActivity from "./RoutineActivity";
-const RoutineSingle = ({ routine, user }) => {
+// import RoutineActivity from "./RoutineActivity";
+const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
   return (
-    <div key={routine.id} className="routine-card">
-      <div id="routine-name">{routine.name}</div>
-      <div id="routine-creator">Created By: {routine.creatorName} </div>
-      <div id="routine-goal">Goal: {routine.goal}</div>
-      <div id="routine-activities">
-        Activities:
-        {routine.activities
-          ? routine.activities.map((activity) => {
-              return <RoutineActivity activity={activity} />;
-            })
-          : null}
-      </div>
-      {user === routine.creatorName ? (
+    <>
+      <div className="routine-card">
         <button
-          className="edit-activity-card-button"
-          onClick={() => console.log("working")}
+          id="routine-name"
+          onClick={() => {
+            console.log("WIP");
+          }}
         >
-          Edit
+          {routine.name}
         </button>
-      ) : null}
-    </div>
+        <div id="routine-creator">Created By: {routine.creatorName} </div>
+        <div id="routine-goal">Goal: {routine.goal}</div>
+        <div id="routine-activities">Activities:</div>
+        {user === routine.creatorName ? (
+          <button
+            className="edit-activity-card-button"
+            onClick={() => {
+              setShowEdit(true);
+              setEditRoutine({
+                id: routine.id,
+                name: routine.name,
+                goal: routine.goal,
+                isPublic: routine.isPublic,
+              });
+            }}
+          >
+            Edit
+          </button>
+        ) : null}
+      </div>
+    </>
   );
 };
 
