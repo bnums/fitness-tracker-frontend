@@ -3,24 +3,20 @@ const AddRoutine = ({ routine, setRoutine, errMsg }) => {
     <>
       <p aria-live="assertive">{errMsg}</p>
       <form className="routine-form">
-        <label>
-          Name:
-          <input
-            value={routine.name}
-            onChange={(e) => {
-              setRoutine({ ...routine, name: e.target.value });
-            }}
-          />
-        </label>
-        <label>
-          Goal:
-          <input
-            value={routine.goal}
-            onChange={(e) => {
-              setRoutine({ ...routine, goal: e.target.value });
-            }}
-          />
-        </label>
+        <label>Name:</label>
+        <input
+          value={routine.name}
+          onChange={(e) => {
+            setRoutine({ ...routine, name: e.target.value });
+          }}
+        />
+        <label>Goal:</label>
+        <input
+          value={routine.goal}
+          onChange={(e) => {
+            setRoutine({ ...routine, goal: e.target.value });
+          }}
+        />
         <label>
           Public?
           <input

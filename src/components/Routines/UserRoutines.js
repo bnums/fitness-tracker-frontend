@@ -54,6 +54,7 @@ const UserRoutines = ({ token, user, activities }) => {
       {userRoutines ? (
         <Routines
           routines={userRoutines}
+          activities={activities}
           user={user}
           token={token}
           fetch={fetchUserRoutines}

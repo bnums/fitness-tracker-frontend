@@ -11,6 +11,7 @@ import PublicRoutines from "./Routines/PublicRoutines";
 import Activities from "./Activities/Activities";
 import AccountForm from "./AccountForm";
 import UserRoutines from "./Routines/UserRoutines";
+import Footer from "./Footer";
 // import Test from "./Test";
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
           element={
             <PublicRoutines
               routines={routines}
+              activities={activities}
               user={user}
               token={token}
               fetchPublicRoutines={fetchPublicRoutines}
@@ -91,6 +93,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

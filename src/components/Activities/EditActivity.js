@@ -1,5 +1,6 @@
 import { callApi } from "../../api";
 import { useState } from "react";
+import "./EditActivity.css";
 
 const EditActivity = ({ activity, token, setErrMsg }) => {
   const [newActivity, setNewActivity] = useState(activity);
@@ -21,8 +22,9 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
   return (
     <form className="" onSubmit={handleEdit}>
       <label>
-        Name:
+        <div className="edit-activity-label">Activity Name:</div>
         <input
+          className="edit-activity-input"
           value={newActivity.name}
           onChange={(e) => {
             setNewActivity({ ...newActivity, name: e.target.value });
@@ -30,8 +32,9 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
         />
       </label>
       <label>
-        Description:
+        <div className="edit-activity-label">Description:</div>
         <input
+          className="edit-activity-input"
           value={newActivity.description}
           onChange={(e) => {
             setNewActivity({ ...newActivity, description: e.target.value });
@@ -39,7 +42,7 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
         />
       </label>
 
-      <button>Save</button>
+      <button className="edit-activity-save-button">Save</button>
     </form>
   );
 };

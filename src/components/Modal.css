@@ -53,3 +53,9 @@
 .modal-submit {
   background-color: #001626;
 }
+
+.modal-close:hover,
+.modal-submit:hover {
+  font-weight: 720;
+  box-shadow: 1px 1px rgb(206, 206, 206);
+}
