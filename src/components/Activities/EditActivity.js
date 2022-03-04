@@ -1,4 +1,4 @@
-import { callApi } from "../api";
+import { callApi } from "../../api";
 import { useState } from "react";
 import "./EditActivity.css";
 
@@ -20,7 +20,11 @@ const EditActivity = ({ activity, token, setErrMsg }) => {
   };
 
   return (
+<<<<<<< HEAD:src/components/EditActivity.js
     <form onSubmit={handleEdit}>
+=======
+    <form className="" onSubmit={handleEdit}>
+>>>>>>> my-routines-tab:src/components/Activities/EditActivity.js
       <label>
         <div className='edit-activity-label'>Activity Name:</div>
         <input

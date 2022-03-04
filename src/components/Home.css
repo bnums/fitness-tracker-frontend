@@ -14,6 +14,7 @@
   color: #000c23;
 }
 
+<<<<<<< HEAD
 .landing-page-subhead {
   font-family: "Karla", sans-serif;
   font-size: 18px;
@@ -24,6 +25,10 @@
   max-width: 500px;
   color: #000c23;
 }
+=======
+/* .landing-page-subhead {
+} */
+>>>>>>> my-routines-tab
 
 .header-sign-up-button {
   padding: 6px 24px;

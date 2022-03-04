@@ -3,6 +3,7 @@ import "./Navigation.css";
 
 const Navigation = ({ user, setUser, token, setToken }) => {
   return (
+<<<<<<< HEAD
     <nav>
       <div className='nav-bar-desktop'>
         <div className='routes-container'>
@@ -77,6 +78,27 @@ const Navigation = ({ user, setUser, token, setToken }) => {
           </Link>
         )}
       </div>
+=======
+    <nav className="nav bar">
+      <Link to="/">Worqout</Link>
+      {user ? <Link to={`/myroutines/${user}`}>My Routines</Link> : null}
+      <Link to="/routines/all">Routines</Link>
+      <Link to="/activities">Activities</Link>
+      {token ? (
+        <Link
+          to="/routines/all"
+          onClick={() => {
+            setToken("");
+            setUser("");
+            localStorage.clear();
+          }}
+        >
+          Log Out
+        </Link>
+      ) : (
+        <Link to="/account/login">Sign In/Register</Link>
+      )}
+>>>>>>> my-routines-tab
     </nav>
   );
 };
