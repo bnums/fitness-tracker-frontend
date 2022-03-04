@@ -1,10 +1,10 @@
+import AllRoutines from "./AllRoutines";
 import "./Routines.css";
-import { Outlet } from "react-router";
-const Routines = () => {
+const Routines = ({ routines, user, token }) => {
   return (
     <div>
       <h1 className="routines-header">Routines Page</h1>
-      <Outlet />
+      <AllRoutines routines={routines} user={user} token={token} />
     </div>
   );
 };

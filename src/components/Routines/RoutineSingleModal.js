@@ -1,5 +1,4 @@
 import RoutineActivity from "./RoutineActivity";
-
 const RoutineSingle = ({ routine, user }) => {
   return (
     <div key={routine.id} className="routine-card">

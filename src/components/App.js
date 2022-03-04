@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -13,13 +12,10 @@ import Activities from "./Activities/Activities";
 import AccountForm from "./AccountForm";
 import UserRoutines from "./Routines/UserRoutines";
 // import Test from "./Test";
-import AllRoutines from "./Routines/AllRoutines";
-import RoutineSingle from "./Routines/RoutineSingle";
 
 function App() {
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
-  const [routine, setRoutine] = useState({});
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
@@ -67,28 +63,14 @@ function App() {
           path="account/:method"
           element={<AccountForm setUser={setUser} setToken={setToken} />}
         />
-        <Route path="/routines" element={<Routines />}>
-          <Route
-            path="public/all"
-            element={
-              <AllRoutines
-                routines={routines}
-                user={user}
-                setRoutine={setRoutine}
-              />
-            }
-          />
-          <Route
-            path=":routineId"
-            element={<RoutineSingle routine={routine} />}
-          />
-          <Route
-            path="user/:username"
-            element={
-              <UserRoutines user={user} token={token} setRoutine={setRoutine} />
-            }
-          />
-        </Route>
+        <Route
+          path="myroutines/:username"
+          element={<UserRoutines user={user} token={token} />}
+        />
+        <Route
+          path="/routines/all"
+          element={<Routines routines={routines} user={user} token={token} />}
+        />
         <Route
           path="/activities"
           element={

@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
-const AllRoutines = ({ routines, user, setRoutine }) => {
-  const navigate = useNavigate();
-
+const AllRoutines = ({ routines, user }) => {
   return (
     <div className="routines-cards">
       {routines.map((routine) => {
@@ -11,8 +7,7 @@ const AllRoutines = ({ routines, user, setRoutine }) => {
             <button
               id="routine-name"
               onClick={() => {
-                setRoutine(routine);
-                navigate(`/routines/${routine.id}`);
+                console.log("WIP");
               }}
             >
               {routine.name}

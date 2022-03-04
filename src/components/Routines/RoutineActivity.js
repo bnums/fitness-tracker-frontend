@@ -1,6 +1,6 @@
 const RoutineActivity = ({ activity }) => {
   return (
-    <div className="routine-activity">
+    <div key={activity.id} className="routine-activity">
       <div id="routine-activity-name">{activity.name}</div>
       <div id="routine-activity-description">{activity.description}</div>
       <div id="routine-activity-count">count: {activity.count}</div>
