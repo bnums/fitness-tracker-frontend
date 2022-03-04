@@ -1,37 +1,47 @@
-import { useState } from "react";
-import { callApi } from "../../api";
-import RoutineForm from "./RoutineForm";
-const AddRoutine = ({ token, user, setRoutines, setShowAdd }) => {
-  const blankRoutine = { name: "", goal: "", isPublic: false };
-  const [errMsg, setErrMsg] = useState("");
-  const [routine, setRoutine] = useState(blankRoutine);
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-    console.log(routine);
-    try {
-      const data = await callApi({
-        url: "/routines",
-        method: "post",
-        body: routine,
-        token,
-      });
-      console.log(data);
-      setShowAdd(false);
-      setRoutine(blankRoutine);
-    } catch (error) {
-      setErrMsg(error.message);
-    }
-  };
+const AddRoutine = ({ routine, setRoutine, errMsg }) => {
   return (
     <>
       <p aria-live="assertive">{errMsg}</p>
-      <RoutineForm
-        handleAdd={handleAdd}
-        routine={routine}
-        setRoutine={setRoutine}
-        setErrMsg={setErrMsg}
-      />
+      <form className="routine-form">
+        <label>
+          Name:
+          <input
+            value={routine.name}
+            onChange={(e) => {
+              setRoutine({ ...routine, name: e.target.value });
+            }}
+          />
+        </label>
+        <label>
+          Goal:
+          <input
+            value={routine.goal}
+            onChange={(e) => {
+              setRoutine({ ...routine, goal: e.target.value });
+            }}
+          />
+        </label>
+        <label>
+          Public?
+          <input
+            type="radio"
+            name="isPublic"
+            onClick={() => {
+              setRoutine({ ...routine, isPublic: true });
+            }}
+          />
+          Yes
+          <input
+            type="radio"
+            name="isPublic"
+            defaultChecked
+            onClick={() => {
+              setRoutine({ ...routine, isPublic: false });
+            }}
+          />
+          No
+        </label>
+      </form>
     </>
   );
 };

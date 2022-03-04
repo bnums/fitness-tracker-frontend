@@ -6,7 +6,26 @@
   line-height: 50px;
   font-weight: 700;
   margin: 80px 32px 32px 32px;
-  text-align: center;
+  text-align: left;
+}
+
+.routines-header h1 {
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+.add-routine-btn {
+  font-family: "Karla", sans-serif;
+  font-size: 20px;
+  color: #7b61ff;
+  background-color: inherit;
+  border: none;
+}
+
+.add-routine-btn:hover {
+  font-weight: 600;
+  text-shadow: 1px 1px rgb(206, 206, 206);
 }
 
 .routines-cards {
