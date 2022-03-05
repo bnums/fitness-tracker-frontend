@@ -23,7 +23,6 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
         body: routineFields,
         token,
       });
-      setShow(false);
       setErrMsg("");
       setRoutineFields(blankRoutine);
     } catch (error) {
@@ -76,17 +75,19 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
             No
           </div>
         </label>
-        {method === "patch" ? (
-          <RoutineActivityForm
-            routineId={routineFields.id}
-            activities={activities}
-          />
-        ) : null}
         <div className="err-msg">
           <p aria-live="assertive">{errMsg}</p>
         </div>
         <button className="routine-form-button">Submit</button>
       </form>
+      {method === "patch" ? (
+        <RoutineActivityForm
+          routineId={routineFields.id}
+          activities={activities}
+          token={token}
+          setErrMsg={setErrMsg}
+        />
+      ) : null}
     </>
   );
 };

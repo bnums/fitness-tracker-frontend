@@ -1,14 +1,32 @@
 import { callApi } from "../../api";
 import { useState } from "react";
 
-const RoutineActivityForm = ({ routineId, activities }) => {
+const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
   const [activityId, setActivityId] = useState(0);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await callApi({
+        url: `/routines/${routineId}/activities`,
+        method: "post",
+        body: {
+          activityId: activityId,
+          count: count,
+          duration: duration,
+        },
+      });
+      console.log(resp);
+    } catch (error) {
+      setErrMsg("Activity is already on routine");
+    }
+  };
+
   return (
     <>
-      <div className="add-routine-activity">Add Activity </div>
-      <form>
+      <form onSubmit={handleAdd}>
         <label className="activity-name-label">Activity Name:</label>
         <select
           value={activityId}
@@ -36,6 +54,7 @@ const RoutineActivityForm = ({ routineId, activities }) => {
           type="number"
           onChange={(e) => setDuration(parseInt(e.target.value))}
         />
+        <button>+</button>
       </form>
     </>
   );
