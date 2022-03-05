@@ -13,11 +13,6 @@ const Modal = (props) => {
         </div>
         <div className="modal-body">{props.children}</div>
         <div className="modal-footer">
-          {props.onSubmit ? (
-            <button onClick={props.onSubmit} className="modal-submit">
-              Submit
-            </button>
-          ) : null}
           <button onClick={props.onClose} className="modal-close">
             Close
           </button>

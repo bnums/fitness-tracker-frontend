@@ -1,18 +1,19 @@
-// import React, { useState } from "react";
+import { useState } from "react";
+import { callApi } from "../../api";
+import Modal from "../Modal";
 import AddActivity from "./AddActivity";
 import EditActivity from "./EditActivity";
+import useAuth from "../../hooks/useAuth";
 import "./Activities.css";
-import { useEffect, useState } from "react";
-import Modal from "../Modal";
-import { callApi } from "../../api";
 
-const Activities = ({ activities, token, fetchActivities }) => {
+const Activities = ({ activities }) => {
+  const {
+    auth: { token },
+  } = useAuth();
   const [showEdit, setShowEdit] = useState(false);
   const [newActivity, setNewActivity] = useState({});
   const [errMsg, setErrMsg] = useState("");
-  useEffect(() => {
-    fetchActivities();
-  });
+
   const handleEdit = async () => {
     try {
       await callApi({

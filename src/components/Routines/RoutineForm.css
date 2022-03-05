@@ -3,7 +3,8 @@
   padding-right: 16px;
 } */
 
-.name-label {
+.name-label,
+.activity-name-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -21,7 +22,8 @@
   width: 100% auto;
 }
 
-.goal-label {
+.goal-label,
+.count-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -45,7 +47,8 @@
   align-items: center;
 }
 
-.public-label {
+.public-label,
+.duration-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -59,4 +62,24 @@
   line-height: 22px;
   font-weight: 300;
   margin: 4px 0px 0px 4px;
+}
+
+.routine-form-button {
+  margin: 24px 0px 0px 0px;
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+}
+
+.err-msg {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  margin: 0px 8px 0px 0px;
+  color: #ae1212;
 }

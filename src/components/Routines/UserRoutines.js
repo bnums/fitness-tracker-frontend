@@ -1,73 +1,86 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { callApi } from "../../api";
-import Routines from "./Routines";
-import AddRoutine from "./AddRoutine";
+import RoutineSingle from "./RoutineSingle";
+import RoutineForm from "./RoutineForm";
+import useAuth from "../../hooks/useAuth";
 import Modal from "../Modal";
 import "./UserRoutines.css";
 
-const UserRoutines = ({ token, user, activities }) => {
-  const [userRoutines, setUserRoutines] = useState([]);
-  const [showAdd, setShowAdd] = useState(false);
-  const blankRoutine = { name: "", goal: "", isPublic: false };
-  const [routine, setRoutine] = useState(blankRoutine);
-  const [errMsg, setErrMsg] = useState("");
+const UserRoutines = ({ activities }) => {
+  const {
+    auth: { user },
+    auth: { token },
+  } = useAuth();
+  const [showForm, setShowForm] = useState(false);
+  const [editField, setEditFields] = useState({});
 
   const fetchUserRoutines = async () => {
     try {
-      const data = await callApi({ url: `/routines/${user}`, token });
-      setUserRoutines(data);
+      return await callApi({ url: `/routines/${user}`, token });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleAdd = async () => {
-    try {
-      await callApi({
-        url: "/routines",
-        method: "post",
-        body: routine,
-        token,
-      });
-      setShowAdd(false);
-      setErrMsg("");
-      setRoutine(blankRoutine);
-      fetchUserRoutines();
-    } catch (error) {
-      setErrMsg(error.message);
-    }
-  };
+  const { data, status } = useQuery("getUserRoutines", fetchUserRoutines);
+  const userRoutines = data;
 
-  useEffect(() => {
-    fetchUserRoutines();
-  });
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <header>
-        <div className='user-routines-welcome'>Welcome {user}!</div>
-        <div className='user-routines-header'>My Routines</div>
-        <div className='add-routine-button' onClick={() => setShowAdd(true)}>
+        <div className="user-routines-welcome">Welcome {user}!</div>
+        <div className="user-routines-header">Your Routines</div>
+        <button className="add-routine-btn" onClick={() => setShowForm(true)}>
           Add A New Routine +
-        </div>
+        </button>
       </header>
-      {userRoutines ? (
-        <Routines
-          routines={userRoutines}
-          activities={activities}
-          user={user}
-          token={token}
-          fetch={fetchUserRoutines}
-        />
-      ) : null}
+      <div className="routines-cards">
+        {userRoutines ? (
+          userRoutines.map((routine) => {
+            return (
+              <RoutineSingle
+                key={routine.id}
+                user={user}
+                routine={routine}
+                token={token}
+                setShowForm={setShowForm}
+                setEditFields={setEditFields}
+                editable={true}
+              />
+            );
+          })
+        ) : (
+          <div className="user-routines-header">
+            {" "}
+            No user routines. Start adding some!
+          </div>
+        )}
+      </div>
       <Modal
-        show={showAdd}
-        title={"Add A New Routine"}
-        onSubmit={handleAdd}
-        onClose={() => setShowAdd(false)}
+        show={showForm}
+        title={
+          Object.keys(editField).length !== 0
+            ? editField.name
+            : "Add A New Routine"
+        }
+        onClose={() => {
+          setShowForm(false);
+          setEditFields("");
+        }}
       >
-        <AddRoutine routine={routine} setRoutine={setRoutine} errMsg={errMsg} />
+        <RoutineForm
+          token={token}
+          setShow={setShowForm}
+          routine={editField}
+          method={Object.keys(editField).length !== 0 ? "patch" : "post"}
+          activities={activities}
+        />
       </Modal>
     </>
   );

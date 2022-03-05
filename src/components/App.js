@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { useQuery } from "react-query";
 import { callApi } from "../api";
+import useAuth from "../hooks/useAuth";
 
 // React components
 import Home from "./Home";
@@ -15,83 +17,47 @@ import Footer from "./Footer";
 // import Test from "./Test";
 
 function App() {
-  const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
-  const [routines, setRoutines] = useState([]);
-  const [activities, setActivities] = useState([]);
-
-  const fetchPublicRoutines = async () => {
-    try {
-      const data = await callApi({ url: "/routines" });
-      setRoutines(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { setAuth } = useAuth();
 
   const fetchActivities = async () => {
     try {
-      const data = await callApi({ url: "/activities" });
-      setActivities(data);
+      const response = await callApi({ url: "/activities" });
+      return response;
     } catch (error) {
       console.error(error);
     }
   };
 
+  const { data, status } = useQuery("getActivities", fetchActivities);
+  let activities = data;
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-      setUser(localStorage.getItem("user"));
+      setAuth({
+        user: localStorage.getItem("user"),
+        token: localStorage.getItem("token"),
+      });
     }
   }, []);
 
-  useEffect(() => {
-    fetchPublicRoutines();
-    fetchActivities();
-  }, []);
+  if (status === "loading") {
+    return <div>loading</div>;
+  }
 
   return (
-    <div className='App'>
-      <Navigation
-        token={token}
-        setToken={setToken}
-        user={user}
-        setUser={setUser}
-      />
+    <div className="App">
+      <Navigation />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="account/:method" element={<AccountForm />} />
         <Route
-          path='account/:method'
-          element={<AccountForm setUser={setUser} setToken={setToken} />}
+          path="myroutines/:username"
+          element={<UserRoutines activities={activities} />}
         />
+        <Route path="/routines/all" element={<PublicRoutines />} />
         <Route
-          path='myroutines/:username'
-          element={
-            <UserRoutines user={user} token={token} activities={activities} />
-          }
-        />
-        <Route
-          path='/routines/all'
-          element={
-            <PublicRoutines
-              routines={routines}
-              setRoutines={setRoutines}
-              activities={activities}
-              user={user}
-              token={token}
-              fetchPublicRoutines={fetchPublicRoutines}
-            />
-          }
-        />
-        <Route
-          path='/activities'
-          element={
-            <Activities
-              activities={activities}
-              token={token}
-              fetchActivities={fetchActivities}
-            />
-          }
+          path="/activities"
+          element={<Activities activities={activities} />}
         />
       </Routes>
       <Footer />
