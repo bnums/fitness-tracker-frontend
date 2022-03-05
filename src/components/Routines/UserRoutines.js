@@ -3,12 +3,14 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { callApi } from "../../api";
 import RoutineSingle from "./RoutineSingle";
-import AddRoutineForm from "./AddRoutineForm";
+// import AddRoutineForm from "./AddRoutineForm";
+import RoutineForm from "./RoutineForm";
 import Modal from "../Modal";
 import "./UserRoutines.css";
 
 const UserRoutines = ({ token, user, activities }) => {
-  const [showAddForm, setShowAddForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [editField, setEditFields] = useState({});
 
   const fetchUserRoutines = async () => {
     try {
@@ -30,10 +32,7 @@ const UserRoutines = ({ token, user, activities }) => {
       <header>
         <div className="user-routines-welcome">Welcome {user}!</div>
         <div className="user-routines-header">Your Routines</div>
-        <button
-          className="add-routine-btn"
-          onClick={() => setShowAddForm(true)}
-        >
+        <button className="add-routine-btn" onClick={() => setShowForm(true)}>
           Add A New Routine +
         </button>
       </header>
@@ -46,6 +45,8 @@ const UserRoutines = ({ token, user, activities }) => {
                 user={user}
                 routine={routine}
                 token={token}
+                setShowForm={setShowForm}
+                setEditFields={setEditFields}
               />
             );
           })
@@ -57,11 +58,23 @@ const UserRoutines = ({ token, user, activities }) => {
         )}
       </div>
       <Modal
-        show={showAddForm}
-        title={"Add A New Routine"}
-        onClose={() => setShowAddForm(false)}
+        show={showForm}
+        title={
+          Object.keys(editField).length !== 0
+            ? editField.name
+            : "Add A New Routine"
+        }
+        onClose={() => {
+          setShowForm(false);
+          setEditFields("");
+        }}
       >
-        <AddRoutineForm token={token} setShowAddForm={setShowAddForm} />
+        <RoutineForm
+          token={token}
+          setShow={setShowForm}
+          routine={editField}
+          method={Object.keys(editField).length !== 0 ? "patch" : "post"}
+        />
       </Modal>
     </>
   );
