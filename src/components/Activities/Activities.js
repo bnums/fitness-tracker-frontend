@@ -6,13 +6,11 @@ import { useEffect, useState } from "react";
 import Modal from "../Modal";
 import { callApi } from "../../api";
 
-const Activities = ({ activities, token, fetchActivities }) => {
+const Activities = ({ activities, token }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [newActivity, setNewActivity] = useState({});
   const [errMsg, setErrMsg] = useState("");
-  useEffect(() => {
-    fetchActivities();
-  });
+
   const handleEdit = async () => {
     try {
       await callApi({

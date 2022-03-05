@@ -1,6 +1,32 @@
+import { useState } from "react";
+import { callApi } from "../../api";
 import RoutineActivity from "./RoutineActivity";
+import Modal from "../Modal";
+import EditRoutineForm from "./EditRoutineForm";
 import "./RoutineSingle.css";
-const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
+
+const RoutineSingle = ({ user, routine, token }) => {
+  const [showEdit, setShowEdit] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [editRoutine, setEditRoutine] = useState({});
+
+  const handleEdit = async () => {
+    try {
+      if (!editRoutine.name || !editRoutine.goal) {
+        throw new Error("Routines must have a name and goal!");
+      }
+      await callApi({
+        url: `/routines/${editRoutine.id}`,
+        method: "patch",
+        body: editRoutine,
+        token,
+      });
+      setShowEdit(false);
+    } catch (error) {
+      setErrMsg(error.message);
+    }
+  };
+
   return (
     <>
       <div className="routine-card">
@@ -29,6 +55,21 @@ const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
           </button>
         ) : null}
       </div>
+      <Modal
+        show={showEdit}
+        title={editRoutine.name}
+        onSubmit={handleEdit}
+        onClose={() => {
+          setShowEdit(false);
+          setErrMsg("");
+        }}
+      >
+        <EditRoutineForm
+          editRoutine={editRoutine}
+          setEditRoutine={setEditRoutine}
+          errMsg={errMsg}
+        />
+      </Modal>
     </>
   );
 };

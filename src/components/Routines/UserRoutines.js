@@ -1,73 +1,67 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { callApi } from "../../api";
-import Routines from "./Routines";
-import AddRoutine from "./AddRoutine";
+import RoutineSingle from "./RoutineSingle";
+import AddRoutineForm from "./AddRoutineForm";
 import Modal from "../Modal";
 import "./UserRoutines.css";
 
 const UserRoutines = ({ token, user, activities }) => {
-  const [userRoutines, setUserRoutines] = useState([]);
-  const [showAdd, setShowAdd] = useState(false);
-  const blankRoutine = { name: "", goal: "", isPublic: false };
-  const [routine, setRoutine] = useState(blankRoutine);
-  const [errMsg, setErrMsg] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const fetchUserRoutines = async () => {
     try {
-      const data = await callApi({ url: `/routines/${user}`, token });
-      setUserRoutines(data);
+      return await callApi({ url: `/routines/${user}`, token });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleAdd = async () => {
-    try {
-      await callApi({
-        url: "/routines",
-        method: "post",
-        body: routine,
-        token,
-      });
-      setShowAdd(false);
-      setErrMsg("");
-      setRoutine(blankRoutine);
-      fetchUserRoutines();
-    } catch (error) {
-      setErrMsg(error.message);
-    }
-  };
+  const { data, status } = useQuery("getUserRoutines", fetchUserRoutines);
+  const userRoutines = data;
 
-  useEffect(() => {
-    fetchUserRoutines();
-  });
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <header>
         <div className="user-routines-welcome">Welcome {user}!</div>
         <div className="user-routines-header">Your Routines</div>
-        <button className="add-routine-btn" onClick={() => setShowAdd(true)}>
+        <button
+          className="add-routine-btn"
+          onClick={() => setShowAddForm(true)}
+        >
           Add A New Routine +
         </button>
       </header>
-      {userRoutines ? (
-        <Routines
-          routines={userRoutines}
-          activities={activities}
-          user={user}
-          token={token}
-          fetch={fetchUserRoutines}
-        />
-      ) : null}
+      <div className="routines-cards">
+        {userRoutines ? (
+          userRoutines.map((routine) => {
+            return (
+              <RoutineSingle
+                key={routine.id}
+                user={user}
+                routine={routine}
+                token={token}
+              />
+            );
+          })
+        ) : (
+          <div className="user-routines-header">
+            {" "}
+            No user routines. Start adding some!
+          </div>
+        )}
+      </div>
       <Modal
-        show={showAdd}
+        show={showAddForm}
         title={"Add A New Routine"}
-        onSubmit={handleAdd}
-        onClose={() => setShowAdd(false)}
+        onClose={() => setShowAddForm(false)}
       >
-        <AddRoutine routine={routine} setRoutine={setRoutine} errMsg={errMsg} />
+        <AddRoutineForm token={token} setShowAddForm={setShowAddForm} />
       </Modal>
     </>
   );

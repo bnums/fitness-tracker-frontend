@@ -1,5 +1,5 @@
-import AddRoutineActivity from "./AddRoutineActivity";
-const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
+import AddRoutineActivity from "./AddRoutineActivityForm";
+const EditRoutineForm = ({ editRoutine, setEditRoutine, errMsg }) => {
   return (
     <>
       <p aria-live="assertive">{errMsg}</p>
@@ -45,4 +45,4 @@ const EditRoutine = ({ editRoutine, setEditRoutine, errMsg }) => {
   );
 };
 
-export default EditRoutine;
+export default EditRoutineForm;

@@ -1,7 +1,7 @@
 import React from "react";
 
-const AddRoutineActivity = () => {
+const AddRoutineActivityForm = () => {
   return <div className="add-routine-activity">Add Routine Activity +</div>;
 };
 
-export default AddRoutineActivity;
+export default AddRoutineActivityForm;

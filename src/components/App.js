@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import { callApi } from "../api";
 
 // React components
@@ -17,26 +18,18 @@ import Footer from "./Footer";
 function App() {
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
-  const [routines, setRoutines] = useState([]);
-  const [activities, setActivities] = useState([]);
-
-  const fetchPublicRoutines = async () => {
-    try {
-      const data = await callApi({ url: "/routines" });
-      setRoutines(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const fetchActivities = async () => {
     try {
-      const data = await callApi({ url: "/activities" });
-      setActivities(data);
+      const response = await callApi({ url: "/activities" });
+      return response;
     } catch (error) {
       console.error(error);
     }
   };
+
+  const { data, status } = useQuery("getActivities", fetchActivities);
+  let activities = data;
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -45,10 +38,9 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchPublicRoutines();
-    fetchActivities();
-  }, []);
+  if (status === "loading") {
+    return <div>loading</div>;
+  }
 
   return (
     <div className="App">
@@ -73,24 +65,12 @@ function App() {
         <Route
           path="/routines/all"
           element={
-            <PublicRoutines
-              routines={routines}
-              activities={activities}
-              user={user}
-              token={token}
-              fetchPublicRoutines={fetchPublicRoutines}
-            />
+            <PublicRoutines activities={activities} user={user} token={token} />
           }
         />
         <Route
           path="/activities"
-          element={
-            <Activities
-              activities={activities}
-              token={token}
-              fetchActivities={fetchActivities}
-            />
-          }
+          element={<Activities activities={activities} token={token} />}
         />
       </Routes>
       <Footer />
