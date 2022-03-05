@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { callApi } from "../../api";
+import AddRoutineActivityForm from "./AddRoutineActivityForm";
 import "./RoutineForm.css";
 
 const RoutineForm = ({ token, routine, setShow, method }) => {
@@ -79,7 +80,7 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
         </label>
         <button className="routine-form-button">Submit</button>
       </form>
-      {/* <AddRoutineActivity /> */}
+      <AddRoutineActivityForm />
     </>
   );
 };
