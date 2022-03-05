@@ -1,6 +1,6 @@
 import RoutineActivity from "./RoutineActivity";
 import "./RoutineSingle.css";
-import { callApi } from "../../api";
+// import { callApi } from "../../api";
 
 const RoutineSingle = ({
   token,
@@ -8,7 +8,7 @@ const RoutineSingle = ({
   routine,
   setShowForm,
   setEditFields,
-  editAccess,
+  editable,
 }) => {
   // const handleDelete = async () => {
   //   try {
@@ -34,7 +34,7 @@ const RoutineSingle = ({
               return <RoutineActivity key={activity.id} activity={activity} />;
             })
           : null}
-        {editAccess ? null : (
+        {editable ? (
           <div className="buttons-container">
             {user === routine.creatorName ? (
               <button
@@ -61,7 +61,7 @@ const RoutineSingle = ({
               </button>
             ) : null}
           </div>
-        )}
+        ) : null}
       </div>
     </>
   );

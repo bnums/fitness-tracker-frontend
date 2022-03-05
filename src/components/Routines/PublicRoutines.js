@@ -37,7 +37,7 @@ const PublicRoutines = ({ user, token }) => {
               user={user}
               routine={routine}
               token={token}
-              editAcess={true}
+              editable={false}
             />
           );
         })}

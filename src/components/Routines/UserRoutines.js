@@ -47,6 +47,7 @@ const UserRoutines = ({ token, user, activities }) => {
                 token={token}
                 setShowForm={setShowForm}
                 setEditFields={setEditFields}
+                editable={true}
               />
             );
           })
