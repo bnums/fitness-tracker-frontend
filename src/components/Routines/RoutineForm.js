@@ -33,8 +33,6 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
 
   return (
     <>
-      <p aria-live="assertive">{errMsg}</p>
-
       <form className="routine-form" onSubmit={handleSubmit}>
         <div>
           <label className="name-label">Routine Name:</label>
@@ -81,6 +79,9 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
         {method === "patch" ? (
           <AddRoutineActivityForm routineId={routineFields.id} />
         ) : null}
+        <div className="err-msg">
+          <p aria-live="assertive">{errMsg}</p>
+        </div>
         <button className="routine-form-button">Submit</button>
       </form>
     </>
