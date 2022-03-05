@@ -6,7 +6,7 @@
 .landing-page-header {
   font-family: "Karla", sans-serif;
   font-size: 54px;
-  line-height: 60px;
+  line-height: 66px;
   font-weight: 700;
   margin: 0px 0px 0px 24px;
   text-align: left;
@@ -19,7 +19,7 @@
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
-  margin: 8px 0px 32px 24px;
+  margin: 16px 0px 32px 24px;
   text-align: left;
   max-width: 500px;
   color: #000c23;
@@ -35,7 +35,7 @@
   border: none;
   display: flex;
   align-self: left;
-  margin: 16px 0px 32px 24px;
+  margin: 24px 0px 32px 24px;
   text-decoration: none;
 }
 

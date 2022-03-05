@@ -27,3 +27,24 @@
   align-items: flex-start;
   margin-bottom: 96px;
 }
+
+.add-routine-button {
+  margin-top: 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  color: #1161ff;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .user-routines-header {
+    font-size: 40px;
+
+    line-height: 54px;
+    margin: 0px 0px 32px 0px;
+  }
+}

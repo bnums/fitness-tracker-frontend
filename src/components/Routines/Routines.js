@@ -2,6 +2,7 @@ import { useState } from "react";
 import { callApi } from "../../api";
 import RoutineSingle from "./RoutineSingle";
 import EditRoutine from "./EditRoutine";
+// import DeleteRoutine from "./DeleteRoutine";
 import Modal from "../Modal";
 
 const Routines = ({ routines, user, token, fetch }) => {
@@ -27,8 +28,27 @@ const Routines = ({ routines, user, token, fetch }) => {
     }
   };
 
+  // const [deleteRoutine, setDeleteRoutine] = useState({});
+
+  // const handleDelete = async () => {
+  //   try {
+  //     if (!deleteRoutine.name || !deleteRoutine.goal) {
+  //       throw new Error("Routines must have a name and goal!");
+  //     }
+  //     await callApi({
+  //       url: `/routines/${deleteRoutine.id}`,
+  //       method: "patch",
+  //       body: deleteRoutine,
+  //       token,
+  //     });
+  //     fetch();
+  //   } catch (error) {
+  //     setErrMsg(error.message);
+  //   }
+  // };
+
   return (
-    <div className="routines-cards">
+    <div className='routines-cards'>
       {routines.map((routine) => {
         return (
           <RoutineSingle
@@ -37,6 +57,7 @@ const Routines = ({ routines, user, token, fetch }) => {
             routine={routine}
             setShowEdit={setShowEdit}
             setEditRoutine={setEditRoutine}
+            // setDeleteRoutine={setDeleteRoutine}
           />
         );
       })}
@@ -55,6 +76,12 @@ const Routines = ({ routines, user, token, fetch }) => {
           errMsg={errMsg}
         />
       </Modal>
+      {/* <DeleteRoutine
+        onSubmit={handleDelete}
+        deleteRoutine={deleteRoutine}
+        setDeleteRoutine={setDeleteRoutine}
+        errMsg={errMsg}
+      /> */}
     </div>
   );
 };

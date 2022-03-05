@@ -1,10 +1,9 @@
 .edit-activity-label {
   text-transform: capitalize;
   font-family: "Karla", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
-  font-weight: 500;
-  margin: 0px 0px 0px 0px;
+  font-weight: 400;
 }
 
 .edit-activity-input {
@@ -12,8 +11,10 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 300;
-  margin: 2px 0px 16px 0px;
-  width: 292px;
+  margin: 4px 4px 8px 4px;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  width: 100% auto;
 }
 
 .edit-activity-save-button {

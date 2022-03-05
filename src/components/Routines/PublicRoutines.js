@@ -4,7 +4,7 @@ const PublicRoutines = ({ routines, user, token, fetchPublicRoutines }) => {
   return (
     <div>
       <header>
-        <h1 className="routines-header">Routines</h1>
+        <div className='routines-header'>Routines</div>
       </header>
       <Routines
         routines={routines}
