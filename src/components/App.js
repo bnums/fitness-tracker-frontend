@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { callApi } from "../api";
+import useAuth from "../hooks/useAuth";
 
 // React components
 import Home from "./Home";
@@ -16,8 +17,7 @@ import Footer from "./Footer";
 // import Test from "./Test";
 
 function App() {
-  const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
+  const { setAuth } = useAuth();
 
   const fetchActivities = async () => {
     try {
@@ -33,8 +33,10 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-      setUser(localStorage.getItem("user"));
+      setAuth({
+        user: localStorage.getItem("user"),
+        token: localStorage.getItem("token"),
+      });
     }
   }, []);
 
@@ -44,33 +46,21 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation
-        token={token}
-        setToken={setToken}
-        user={user}
-        setUser={setUser}
-      />
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="account/:method"
-          element={<AccountForm setUser={setUser} setToken={setToken} />}
-        />
+        <Route path="account/:method" element={<AccountForm />} />
         <Route
           path="myroutines/:username"
-          element={
-            <UserRoutines user={user} token={token} activities={activities} />
-          }
+          element={<UserRoutines activities={activities} />}
         />
         <Route
           path="/routines/all"
-          element={
-            <PublicRoutines activities={activities} user={user} token={token} />
-          }
+          element={<PublicRoutines activities={activities} />}
         />
         <Route
           path="/activities"
-          element={<Activities activities={activities} token={token} />}
+          element={<Activities activities={activities} />}
         />
       </Routes>
       <Footer />

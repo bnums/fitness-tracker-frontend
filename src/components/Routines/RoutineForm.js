@@ -78,9 +78,11 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
             No
           </div>
         </label>
+        {method === "patch" ? (
+          <AddRoutineActivityForm routineId={routineFields.id} />
+        ) : null}
         <button className="routine-form-button">Submit</button>
       </form>
-      <AddRoutineActivityForm />
     </>
   );
 };

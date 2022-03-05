@@ -3,12 +3,16 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { callApi } from "../../api";
 import RoutineSingle from "./RoutineSingle";
-// import AddRoutineForm from "./AddRoutineForm";
 import RoutineForm from "./RoutineForm";
+import useAuth from "../../hooks/useAuth";
 import Modal from "../Modal";
 import "./UserRoutines.css";
 
-const UserRoutines = ({ token, user, activities }) => {
+const UserRoutines = () => {
+  const {
+    auth: { user },
+    auth: { token },
+  } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editField, setEditFields] = useState({});
 

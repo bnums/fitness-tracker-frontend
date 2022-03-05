@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { callApi } from "../api";
+import useAuth from "../hooks/useAuth";
 import "./AccountForm.css";
 
-const AccountForm = ({ setToken, setUser }) => {
+const AccountForm = () => {
   const params = useParams();
   let { method } = params;
   const title = method === "login" ? "Log In" : "Register";
@@ -13,6 +14,7 @@ const AccountForm = ({ setToken, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const { setAuth } = useAuth();
 
   useEffect(() => {
     userRef.current.focus();
@@ -39,8 +41,7 @@ const AccountForm = ({ setToken, setUser }) => {
       if (user) {
         setUsername("");
         setPassword("");
-        setToken(token);
-        setUser(user.username);
+        setAuth({ user: user.username, token: token });
         navigate(`/myroutines/${user.username}`);
         localStorage.setItem("token", token);
         localStorage.setItem("user", user.username);
@@ -51,25 +52,25 @@ const AccountForm = ({ setToken, setUser }) => {
   };
 
   return (
-    <div className='account-form-container'>
-      <section className='account-form'>
-        <div className='account-form-content'>
-          <div className='account-form-header'>{title}</div>
+    <div className="account-form-container">
+      <section className="account-form">
+        <div className="account-form-content">
+          <div className="account-form-header">{title}</div>
 
           <form onSubmit={handleSubmit}>
-            <div className='account-form-input'>
-              <div className='account-form-username-container'>
-                <div className='account-form-username'>
+            <div className="account-form-input">
+              <div className="account-form-username-container">
+                <div className="account-form-username">
                   <label
-                    htmlFor='username'
-                    className='account-form-username-label'
+                    htmlFor="username"
+                    className="account-form-username-label"
                   >
                     Username:
                   </label>
                   <input
-                    className='account-form-username-input'
+                    className="account-form-username-input"
                     required
-                    label='username'
+                    label="username"
                     ref={userRef}
                     value={username}
                     onChange={(e) => {
@@ -78,28 +79,28 @@ const AccountForm = ({ setToken, setUser }) => {
                   />
                 </div>
               </div>
-              <div className='account-form-password-container'>
-                <div className='account-form-password'>
+              <div className="account-form-password-container">
+                <div className="account-form-password">
                   <label
-                    htmlFor='password'
-                    className='account-form-password-label'
+                    htmlFor="password"
+                    className="account-form-password-label"
                   >
                     Password:
                   </label>
                   <input
-                    className='account-form-password-input'
+                    className="account-form-password-input"
                     required
-                    label='password'
+                    label="password"
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
                   />
-                  <div className='err-msg'>
+                  <div className="err-msg">
                     <p
                       ref={errRef}
                       className={errMsg ? "errmsg" : "offscreen"}
-                      aria-live='assertive'
+                      aria-live="assertive"
                     >
                       {errMsg}
                     </p>
@@ -107,14 +108,14 @@ const AccountForm = ({ setToken, setUser }) => {
                 </div>
               </div>
             </div>
-            <button className='account-form-button' type='submit'>
+            <button className="account-form-button" type="submit">
               {title}
             </button>
-            <div className='account-form-additional'>
+            <div className="account-form-additional">
               {method === "login" ? (
                 <div>
                   Not a member yet?
-                  <Link className='account-form-path' to={"/account/register"}>
+                  <Link className="account-form-path" to={"/account/register"}>
                     {" "}
                     Register Now
                   </Link>
@@ -122,7 +123,7 @@ const AccountForm = ({ setToken, setUser }) => {
               ) : (
                 <div>
                   Already have an account?{" "}
-                  <Link className='account-form-path' to={"/account/login"}>
+                  <Link className="account-form-path" to={"/account/login"}>
                     {" "}
                     Log in
                   </Link>
