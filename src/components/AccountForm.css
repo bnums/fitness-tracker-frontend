@@ -1,7 +1,8 @@
 .account-form-container {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100% auto;
+  margin: 0px 16px;
 }
 
 .account-form {
@@ -14,15 +15,15 @@
 .account-form-input {
   display: flex;
   flex-direction: column;
-  width: 280px;
 }
 
 .account-form-content {
-  background-color: #ffffff;
-  padding: 40px;
+  background-color: #fff;
+  padding: 32px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 300px;
 }
 
 .account-form-header {
@@ -58,6 +59,7 @@
   margin: 4px 0px 8px 0px;
   border: 1px solid #001b50;
   border-radius: 2px;
+  padding-left: 4px;
 }
 
 .account-form-password-container {
@@ -85,6 +87,7 @@
   margin: 4px 0px 0px 0px;
   border: 1px solid #001b50;
   border-radius: 2px;
+  padding-left: 4px;
 }
 
 .err-msg {
@@ -119,6 +122,12 @@
 }
 
 .account-form-path {
-  color: #0055ff;
+  color: #1161ff;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .account-form-content {
+    width: 100%;
+  }
 }
