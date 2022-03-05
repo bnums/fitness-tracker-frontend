@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import Modal from "../Modal";
 import "./UserRoutines.css";
 
-const UserRoutines = () => {
+const UserRoutines = ({ activities }) => {
   const {
     auth: { user },
     auth: { token },
@@ -79,6 +79,7 @@ const UserRoutines = () => {
           setShow={setShowForm}
           routine={editField}
           method={Object.keys(editField).length !== 0 ? "patch" : "post"}
+          activities={activities}
         />
       </Modal>
     </>

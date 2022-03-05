@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { callApi } from "../../api";
-import AddRoutineActivityForm from "./AddRoutineActivityForm";
+import RoutineActivityForm from "./RoutineActivityForm";
 import "./RoutineForm.css";
 
-const RoutineForm = ({ token, routine, setShow, method }) => {
+const RoutineForm = ({ token, routine, setShow, method, activities }) => {
   const blankRoutine = { name: "", goal: "", isPublic: false };
   const [routineFields, setRoutineFields] = useState(
     Object.keys(routine).length !== 0 ? routine : blankRoutine
@@ -77,7 +77,10 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
           </div>
         </label>
         {method === "patch" ? (
-          <AddRoutineActivityForm routineId={routineFields.id} />
+          <RoutineActivityForm
+            routineId={routineFields.id}
+            activities={activities}
+          />
         ) : null}
         <div className="err-msg">
           <p aria-live="assertive">{errMsg}</p>

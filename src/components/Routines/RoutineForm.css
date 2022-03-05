@@ -3,7 +3,8 @@
   padding-right: 16px;
 } */
 
-.name-label {
+.name-label,
+.activity-name-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -21,7 +22,8 @@
   width: 100% auto;
 }
 
-.goal-label {
+.goal-label,
+.count-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -45,7 +47,8 @@
   align-items: center;
 }
 
-.public-label {
+.public-label,
+.duration-label {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   line-height: 24px;
