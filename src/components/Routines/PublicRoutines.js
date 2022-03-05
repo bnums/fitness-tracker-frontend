@@ -1,6 +1,12 @@
 import Routines from "./Routines";
 import "./Routines.css";
-const PublicRoutines = ({ routines, user, token, fetchPublicRoutines }) => {
+const PublicRoutines = ({
+  routines,
+  setRoutines,
+  user,
+  token,
+  fetchPublicRoutines,
+}) => {
   return (
     <div>
       <header>
@@ -8,6 +14,7 @@ const PublicRoutines = ({ routines, user, token, fetchPublicRoutines }) => {
       </header>
       <Routines
         routines={routines}
+        setRoutines={setRoutines}
         user={user}
         token={token}
         fetch={fetchPublicRoutines}

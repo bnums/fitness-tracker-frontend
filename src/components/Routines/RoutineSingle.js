@@ -1,6 +1,30 @@
 import RoutineActivity from "./RoutineActivity";
 import "./RoutineSingle.css";
-const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
+import { callApi } from "../../api";
+
+const RoutineSingle = ({
+  token,
+  user,
+  routine,
+  setShowEdit,
+  setEditRoutine,
+  routines,
+  setRoutines,
+}) => {
+  const handleDelete = async () => {
+    try {
+      await callApi({
+        url: `/routines/${routine.id}`,
+        method: "delete",
+        token,
+      });
+      const filterRoutines = routines.filter((elem) => elem.id !== routine.id);
+      setRoutines(filterRoutines);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <>
       <div className='routine-card'>
@@ -32,9 +56,7 @@ const RoutineSingle = ({ user, routine, setShowEdit, setEditRoutine }) => {
           {user === routine.creatorName ? (
             <button
               className='delete-routine-card-button'
-              onClick={() => {
-                console.log("deleted");
-              }}
+              onClick={handleDelete}
             >
               Delete
             </button>
