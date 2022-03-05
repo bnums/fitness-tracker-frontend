@@ -2,14 +2,17 @@ import { callApi } from "../../api";
 import { useState } from "react";
 
 const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
-  const [activityId, setActivityId] = useState(0);
+  const [activityId, setActivityId] = useState(activities[0].id);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
 
   const handleAdd = async (e) => {
     e.preventDefault();
+    if (count <= 0 || duration <= 0) {
+      return setErrMsg("Count and duration must be greater than 0");
+    }
     try {
-      const resp = await callApi({
+      await callApi({
         url: `/routines/${routineId}/activities`,
         method: "post",
         body: {
@@ -18,7 +21,7 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
           duration: duration,
         },
       });
-      console.log(resp);
+      setErrMsg("Routine Successfully Added!");
     } catch (error) {
       setErrMsg("Activity is already on routine");
     }
