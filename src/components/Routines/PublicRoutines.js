@@ -27,7 +27,7 @@ const PublicRoutines = ({ user, token }) => {
   return (
     <div>
       <header>
-        <h1 className="routines-header">Routines</h1>
+        <div className='routines-header'>Routines</div>
       </header>
       <div className="routines-cards">
         {publicRoutines.map((routine) => {

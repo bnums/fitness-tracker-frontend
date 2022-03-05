@@ -1,0 +1,62 @@
+/* .routine-form {
+  padding-left: 16px;
+  padding-right: 16px;
+} */
+
+.name-label {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.name-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  margin: 4px 8px 8px 4px;
+  width: 100% auto;
+}
+
+.goal-label {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.goal-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  margin: 4px 4px 8px 4px;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  width: 100% auto;
+}
+
+.public-label-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.public-label {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 0px 0px 0px 0px;
+}
+
+.public-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 300;
+  margin: 4px 0px 0px 4px;
+}

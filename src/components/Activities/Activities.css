@@ -54,3 +54,10 @@
   color: #fff;
   border: none;
 }
+
+@media (max-width: 768px) {
+  .activities-header {
+    font-size: 40px;
+    line-height: 54px;
+  }
+}

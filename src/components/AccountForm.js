@@ -57,58 +57,76 @@ const AccountForm = ({ setToken, setUser }) => {
           <div className='account-form-header'>{title}</div>
 
           <form onSubmit={handleSubmit}>
-            <label htmlFor='username' className='account-form-username'>
-              Username:
-            </label>
-            <input
-              required
-              label='username'
-              ref={userRef}
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-            <label htmlFor='password' className='account-form-password'>
-              Password:
-            </label>
-            <input
-              required
-              label='password'
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-            <div className='err-msg'>
-              <p
-                ref={errRef}
-                className={errMsg ? "errmsg" : "offscreen"}
-                aria-live='assertive'
-              >
-                {errMsg}
-              </p>
+            <div className='account-form-input'>
+              <div className='account-form-username-container'>
+                <div className='account-form-username'>
+                  <label
+                    htmlFor='username'
+                    className='account-form-username-label'
+                  >
+                    Username:
+                  </label>
+                  <input
+                    className='account-form-username-input'
+                    required
+                    label='username'
+                    ref={userRef}
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className='account-form-password-container'>
+                <div className='account-form-password'>
+                  <label
+                    htmlFor='password'
+                    className='account-form-password-label'
+                  >
+                    Password:
+                  </label>
+                  <input
+                    className='account-form-password-input'
+                    required
+                    label='password'
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <div className='err-msg'>
+                    <p
+                      ref={errRef}
+                      className={errMsg ? "errmsg" : "offscreen"}
+                      aria-live='assertive'
+                    >
+                      {errMsg}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
             <button className='account-form-button' type='submit'>
               {title}
             </button>
-            <div>
+            <div className='account-form-additional'>
               {method === "login" ? (
                 <div>
                   Not a member yet?
-                  <Link
-                    className='log-in-path-to-register'
-                    to={"/account/register"}
-                  >
+                  <Link className='account-form-path' to={"/account/register"}>
                     {" "}
-                    Register Now!
+                    Register Now
                   </Link>
                 </div>
               ) : (
-                <Link to={"/account/login"}>
-                  {" "}
-                  Already have an account? Click here to log in!
-                </Link>
+                <div>
+                  Already have an account?{" "}
+                  <Link className='account-form-path' to={"/account/login"}>
+                    {" "}
+                    Log in
+                  </Link>
+                </div>
               )}
             </div>
           </form>

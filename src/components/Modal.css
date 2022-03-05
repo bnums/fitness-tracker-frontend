@@ -8,10 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .modal-content {
-  width: 500px;
+  margin: 24px;
   background-color: #fff;
 }
 
@@ -21,41 +22,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: capitalize;
 }
 
 .modal-title {
-  margin: 0;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 40px;
-  line-height: 50px;
-  font-weight: 700;
-  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  margin: 8px;
 }
 
 .modal-body {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  min-width: 280px;
 }
 
-.modal-close,
 .modal-submit {
-  margin: 10px;
-  padding: 4px 16px;
+  padding: 6px 24px;
   font-family: "Karla", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  background-color: #818181;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
   color: #fff;
   border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  width: fit-content;
+  margin-right: 24px;
+  border: 1px solid #001b50;
 }
 
-.modal-submit {
-  background-color: #001626;
-}
-
-.modal-close:hover,
-.modal-submit:hover {
-  font-weight: 720;
-  box-shadow: 1px 1px rgb(206, 206, 206);
+.modal-close {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #001b50;
+  border: 1px solid #d0d0d0;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
 }
