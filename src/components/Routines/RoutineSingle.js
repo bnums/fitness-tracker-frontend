@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import RoutineActivity from "./RoutineActivity";
 import { callApi } from "../../api";
@@ -11,6 +12,7 @@ const RoutineSingle = ({
   token,
   setType,
 }) => {
+  const [routineId, setRoutineId] = useState(0);
   const queryClient = useQueryClient();
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
@@ -50,6 +52,7 @@ const RoutineSingle = ({
       console.log(error);
     }
   };
+  console.log(routine);
 
   return (
     <>
@@ -59,7 +62,13 @@ const RoutineSingle = ({
         <div className="description">Goal: {routine.goal}</div>
         {routine.activities && routine.activities.length
           ? routine.activities.map((activity) => {
-              return <RoutineActivity key={activity.id} activity={activity} />;
+              return (
+                <RoutineActivity
+                  key={activity.id}
+                  routine={routine}
+                  activity={activity}
+                />
+              );
             })
           : null}
 

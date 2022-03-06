@@ -2,7 +2,7 @@ import { useState } from "react";
 import Chevron from "../Chevron";
 import "./RoutineActivity.css";
 
-const RoutineActivity = ({ activity }) => {
+const RoutineActivity = ({ activity, routineActivityId }) => {
   const [active, setActive] = useState("");
   const [height, setHeight] = useState("0px");
   const [rotate, setRotate] = useState("chevron-icon");
@@ -33,15 +33,15 @@ const RoutineActivity = ({ activity }) => {
         <div className="routine-activity-duration">
           Duration: {activity.duration}
         </div>
-        {/* <div className="routine-activity-buttons">
+        <div className="routine-activity-buttons">
           <button
             className="routine-activity-edit-button"
-            onClick={() => console.log("working")}
+            onClick={() => console.log(routineActivityId)}
           >
             Edit
           </button>
           <div className="routine-activity-delete-button">Delete</div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
