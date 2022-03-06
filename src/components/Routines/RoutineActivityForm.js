@@ -1,10 +1,19 @@
 import { callApi } from "../../api";
 import { useState, useEffect } from "react";
+import { useMutation, useQueryClient } from "react-query";
 
 const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
   const [activityId, setActivityId] = useState(activities[0].id);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(callApi, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getUserRoutines");
+      setErrMsg("Routine Successfully Added!");
+    },
+  });
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -12,7 +21,7 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
       return setErrMsg("Count and duration must be greater than 0");
     }
     try {
-      await callApi({
+      mutate({
         url: `/routines/${routineId}/activities`,
         method: "post",
         body: {
@@ -21,7 +30,6 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
           duration: duration,
         },
       });
-      setErrMsg("Routine Successfully Added!");
     } catch (error) {
       setErrMsg("Activity is already on routine");
     }
@@ -69,11 +77,3 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
 };
 
 export default RoutineActivityForm;
-
-/*
-body {
-  activityId
-  count
-  duration
-}
-*/

@@ -51,11 +51,11 @@ const Navigation = () => {
           </Link>
           <div className="mobile-routes-container">
             {user ? (
-              <Link className="mobile-my-routines" to={`/routines/${user}`}>
+              <Link className="mobile-my-routines" to={`/myroutines/${user}`}>
                 My Routines
               </Link>
             ) : null}
-            <Link className="mobile-routines" to="/routines/public">
+            <Link className="mobile-routines" to="/routines/all">
               Routines
             </Link>
             <Link className="mobile-activities" to="/activities">

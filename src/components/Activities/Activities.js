@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { callApi } from "../../api";
 import Modal from "../Modal";
-import AddActivity from "./AddActivity";
-import EditActivity from "./EditActivity";
+import ActivityForm from "./ActivityForm";
 import useAuth from "../../hooks/useAuth";
 import "./Activities.css";
 
@@ -10,67 +8,51 @@ const Activities = ({ activities }) => {
   const {
     auth: { token },
   } = useAuth();
-  const [showEdit, setShowEdit] = useState(false);
-  const [newActivity, setNewActivity] = useState({});
-  const [errMsg, setErrMsg] = useState("");
-
-  const handleEdit = async () => {
-    try {
-      await callApi({
-        url: `/activities/${newActivity.id}`,
-        method: `PATCH`,
-        body: newActivity,
-        token,
-      });
-    } catch (error) {
-      setErrMsg(error.message);
-    }
-  };
+  const [show, setShow] = useState(false);
+  const [activityField, setActivityField] = useState({});
 
   return (
     <>
       <h1 className="activities-header">Activities</h1>
-      <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
-        {errMsg}
-      </p>
-      <div>
-        {token ? <AddActivity token={token} setErrMsg={setErrMsg} /> : null}
-      </div>
+      <button className="add-activity-button" onClick={() => setShow(true)}>
+        Add A New Activity +
+      </button>
       <div className="activities-cards">
         {activities.map((activity) => {
           return (
             <div className="activity-card" key={activity.id}>
               <div className="activity-name">{activity.name}</div>
               <div className="activity-description">{activity.description}</div>
-              <button
-                className="edit-activity-card-button"
-                onClick={() => {
-                  setShowEdit(true);
-                  setNewActivity({
-                    id: activity.id,
-                    name: activity.name,
-                    description: activity.description,
-                  });
-                }}
-              >
-                Edit
-              </button>
+              {token ? (
+                <button
+                  className="edit-activity-card-button"
+                  onClick={() => {
+                    setShow(true);
+                    setActivityField({
+                      id: activity.id,
+                      name: activity.name,
+                      description: activity.description,
+                    });
+                  }}
+                >
+                  Edit
+                </button>
+              ) : null}
             </div>
           );
         })}
         <Modal
-          title={newActivity.name}
-          show={showEdit}
-          onSubmit={handleEdit}
+          show={show}
+          title={activityField.name ? activityField.name : "Add A New Activity"}
           onClose={() => {
-            setShowEdit(false);
-            setErrMsg("");
+            setShow(false);
+            setActivityField({});
           }}
         >
-          <EditActivity
-            newActivity={newActivity}
-            setNewActivity={setNewActivity}
-            setErrMsg={setErrMsg}
+          <ActivityForm
+            token={token}
+            method={"temp"}
+            activity={activityField}
           />
         </Modal>
       </div>

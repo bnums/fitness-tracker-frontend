@@ -1,36 +1,62 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useState } from "react";
+import { callApi } from "../../api";
+import { useMutation, useQueryClient } from "react-query";
+import "./ActivityForm.css";
 
-const ActivityForm = ({ handleAdd, activity, setActivity, setErrMsg }) => {
-  useEffect(() => {
-    setErrMsg("");
-  }, [activity.name, activity.goal]);
+const ActivityForm = ({ token, activity }) => {
+  const [errMsg, setErrMsg] = useState();
+  const [fields, setFields] = useState(
+    Object.keys(activity).length !== 0 ? activity : {}
+  );
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(callApi, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getUserRoutines");
+      queryClient.invalidateQueries("getActivities");
+      queryClient.invalidateQueries("getPublicRoutines");
+      setErrMsg("");
+      setFields({});
+    },
+  });
+  const method = Object.keys(activity).length !== 0 ? "patch" : "post";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      mutate({
+        url: method === "post" ? `/activities` : `/activities/${fields.id}`,
+        method: method,
+        body: fields,
+        token,
+      });
+    } catch (error) {
+      setErrMsg(error.message);
+    }
+  };
 
   return (
-    <form className="" onSubmit={handleAdd}>
-      <label>
-        Name:
-        <input
-          value={activity.name}
-          required
-          onChange={(e) => {
-            setActivity({ ...activity, name: e.target.value.toLowerCase() });
-            console.log(activity.name);
-          }}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          value={activity.description}
-          required
-          onChange={(e) => {
-            setActivity({ ...activity, description: e.target.value });
-          }}
-        />
-      </label>
-
-      <button>Add New Activity</button>
+    <form className="activity-form" onSubmit={handleSubmit}>
+      <p className="err-msg" aria-live="assertive">
+        {errMsg}
+      </p>
+      <label className="activity-label">Name:</label>
+      <input
+        className="activity-input"
+        value={fields.name}
+        required
+        onChange={(e) => {
+          setFields({ ...fields, name: e.target.value.toLowerCase() });
+        }}
+      />
+      <label className="activity-label">Description:</label>
+      <input
+        className="activity-input"
+        value={fields.description}
+        required
+        onChange={(e) => {
+          setFields({ ...fields, description: e.target.value });
+        }}
+      />
+      <button className="activity-save-button">Submit</button>
     </form>
   );
 };

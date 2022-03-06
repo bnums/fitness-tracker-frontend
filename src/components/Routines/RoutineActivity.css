@@ -50,7 +50,7 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 300;
-  margin: 8px 0px 4px 0px;
+  margin: 8px 0px 4px 14px;
 }
 
 .routine-activity-count {
@@ -59,6 +59,7 @@
   line-height: 18px;
   font-weight: 500;
   padding-bottom: 0px;
+  margin: 8px 0px 0px 14px;
 }
 
 .routine-activity-duration {
@@ -66,6 +67,7 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: 500;
+  margin: 4px 0px 4px 14px;
   margin-bottom: 24px;
 }
 

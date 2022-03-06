@@ -24,7 +24,9 @@ const UserRoutines = ({ activities }) => {
     }
   };
 
-  const { data, status } = useQuery("getUserRoutines", fetchUserRoutines);
+  const { data, status } = useQuery("getUserRoutines", fetchUserRoutines, {
+    cacheTime: 10 * 60 * 1000,
+  });
   const userRoutines = data;
 
   if (status === "loading") {
@@ -36,7 +38,10 @@ const UserRoutines = ({ activities }) => {
       <header>
         <div className="user-routines-welcome">Welcome {user}!</div>
         <div className="user-routines-header">Your Routines</div>
-        <button className="add-routine-btn" onClick={() => setShowForm(true)}>
+        <button
+          className="add-routine-button"
+          onClick={() => setShowForm(true)}
+        >
           Add A New Routine +
         </button>
       </header>

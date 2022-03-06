@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "react-query";
 import RoutineActivity from "./RoutineActivity";
 import { callApi } from "../../api";
 import "./RoutineSingle.css";
@@ -9,6 +10,13 @@ const RoutineSingle = ({
   editable,
   token,
 }) => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(callApi, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getUserRoutines");
+    },
+  });
+
   const handleEdit = () => {
     setShowForm(true);
     setEditFields({
@@ -21,12 +29,11 @@ const RoutineSingle = ({
 
   const handleDelete = async (routineId, token) => {
     try {
-      await callApi({
+      mutate({
         url: `/routines/${routineId}`,
         method: "delete",
         token,
       });
-      console.log("Activity Deleted");
     } catch (error) {
       console.log(error);
     }

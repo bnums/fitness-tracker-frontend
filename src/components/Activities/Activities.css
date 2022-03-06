@@ -44,6 +44,24 @@
   font-weight: 300;
 }
 
+.add-activity-button {
+  margin-top: 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  color: #1161ff;
+  text-align: center;
+  background-color: inherit;
+  border: none;
+}
+
+.add-activity-button:hover {
+  transform: translateY(-0.25em);
+}
+
 .edit-activity-card-button {
   margin: 24px 0px 0px 0px;
   padding: 6px 24px;
