@@ -14,25 +14,24 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
   const method = editField.routineActivityId ? "patch" : "post";
 
   const queryClient = useQueryClient();
-  const { mutate } = useMutation(callApi, {
+  const { mutateAsync } = useMutation(callApi, {
     onSuccess: () => {
       queryClient.invalidateQueries("getUserRoutines");
       method === "post"
-        ? setErrMsg("Routine successfully Added!")
-        : setErrMsg("Routine successfully Updated!");
+        ? setErrMsg("Activity successfully Added!")
+        : setErrMsg("Activity successfully Updated!");
     },
     onError: () => {
       setErrMsg("Activity is already on routine");
     },
   });
 
-  const handleAdd = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     if (count <= 0 || duration <= 0) {
       return setErrMsg("Count and duration must be greater than 0");
     }
     try {
-      mutate({
+      mutateAsync({
         url:
           method === "post"
             ? `/routines/${editField.routineId}/activities`
@@ -50,9 +49,21 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
     }
   };
 
+  const handleDelete = () => {
+    try {
+      mutateAsync({
+        url: `/routine_activities/${editField.routineActivityId}`,
+        method: "delete",
+        token,
+      });
+    } catch (error) {
+      setErrMsg("Activity could not be deleted");
+    }
+  };
+
   return (
     <>
-      <form onSubmit={handleAdd}>
+      <form>
         {editField.name ? null : (
           <label className="activity-name-label">
             Activity Name:
@@ -84,8 +95,15 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
           type="number"
           onChange={(e) => setDuration(parseInt(e.target.value))}
         />
-        <button className="routine-form-button">+</button>
       </form>
+      <footer className="buttons-container">
+        <button className="delete-routine-card-button" onClick={handleDelete}>
+          Delete
+        </button>
+        <button className="edit-activity-card-button" onClick={handleSubmit}>
+          Submit
+        </button>
+      </footer>
       <div className="err-msg">
         <p aria-live="assertive">{errMsg}</p>
       </div>
