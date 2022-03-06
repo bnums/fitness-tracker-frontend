@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import { callApi } from "../../api";
 import RoutineActivityForm from "./RoutineActivityForm";
 import "./RoutineForm.css";
@@ -9,6 +10,15 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
     Object.keys(routine).length !== 0 ? routine : blankRoutine
   );
   const [errMsg, setErrMsg] = useState("");
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(callApi, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getUserRoutines");
+      setErrMsg("");
+      setRoutineFields(blankRoutine);
+      setShow(false);
+    },
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,15 +27,12 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
       return;
     }
     try {
-      await callApi({
+      mutate({
         url: method === "post" ? `/routines` : `/routines/${routine.id}`,
         method: method,
         body: routineFields,
         token,
       });
-      setErrMsg("");
-      setRoutineFields(blankRoutine);
-      setShow(false);
     } catch (error) {
       setErrMsg(error.message);
     }
