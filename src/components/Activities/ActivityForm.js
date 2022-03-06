@@ -17,6 +17,9 @@ const ActivityForm = ({ token, activity }) => {
       setErrMsg("");
       setFields({});
     },
+    onError: () => {
+      setErrMsg("This activity already exists");
+    },
   });
   const method = Object.keys(activity).length !== 0 ? "patch" : "post";
   const handleSubmit = async (e) => {

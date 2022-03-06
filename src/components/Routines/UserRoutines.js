@@ -77,7 +77,7 @@ const UserRoutines = ({ activities }) => {
       </div>
       <Modal
         show={showForm}
-        title={title}
+        title={type === "routine" ? title : "Add A New Routine Activity"}
         onClose={() => {
           setShowForm(false);
           setEditFields("");
