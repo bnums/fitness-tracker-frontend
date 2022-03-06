@@ -1,5 +1,5 @@
 import { callApi } from "../../api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
   const [activityId, setActivityId] = useState(activities[0].id);
@@ -26,6 +26,11 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
       setErrMsg("Activity is already on routine");
     }
   };
+
+  useEffect(() => {
+    setErrMsg("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activityId, count, duration]);
 
   return (
     <>
