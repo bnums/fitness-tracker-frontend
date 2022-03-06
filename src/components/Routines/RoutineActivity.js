@@ -59,12 +59,6 @@ const RoutineActivity = ({
             >
               Edit
             </button>
-            {/* <div
-              className="routine-activity-delete-button"
-              onClick={handleDelete(activity.routineActivityId, token)}
-            >
-              Delete
-            </div> */}
           </div>
         ) : null}
       </div>
