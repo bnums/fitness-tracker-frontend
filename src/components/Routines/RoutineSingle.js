@@ -1,27 +1,19 @@
-import { useMutation, useQueryClient } from "react-query";
 import RoutineActivity from "./RoutineActivity";
-import { callApi } from "../../api";
 import "./RoutineSingle.css";
 
 const RoutineSingle = ({
   routine,
+  editable,
   setShowForm,
   setEditFields,
-  editable,
-  token,
+  setMethod,
   setType,
 }) => {
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation(callApi, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("getUserRoutines");
-    },
-  });
-
   const handleEdit = () => {
     setShowForm(true);
+    setMethod("patch");
     setEditFields({
-      id: routine.id,
+      routineId: routine.id,
       name: routine.name,
       goal: routine.goal,
       isPublic: routine.isPublic,
@@ -31,24 +23,12 @@ const RoutineSingle = ({
   const handleRoutineActivity = () => {
     setShowForm(true);
     setType("activity");
+    setMethod("post");
     setEditFields({
       routineId: routine.id,
-      name: routine.name,
       goal: routine.goal,
       isPublic: routine.isPublic,
     });
-  };
-
-  const handleDelete = async (routineId, token) => {
-    try {
-      mutate({
-        url: `/routines/${routineId}`,
-        method: "delete",
-        token,
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -85,14 +65,6 @@ const RoutineSingle = ({
                 onClick={handleEdit}
               >
                 Edit
-              </button>
-              <button
-                className="delete-routine-card-button"
-                onClick={() => {
-                  handleDelete(routine.id, token);
-                }}
-              >
-                Delete
               </button>
             </div>
           </section>

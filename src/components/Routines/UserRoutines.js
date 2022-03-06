@@ -17,6 +17,7 @@ const UserRoutines = ({ activities }) => {
   const [showForm, setShowForm] = useState(false);
   const [editField, setEditFields] = useState({});
   const [type, setType] = useState("routine");
+  const [method, setMethod] = useState("");
   const title = editField.name ? editField.name : "Add A New Routine";
 
   const fetchUserRoutines = async () => {
@@ -45,6 +46,7 @@ const UserRoutines = ({ activities }) => {
           className="add-routine-button"
           onClick={() => {
             setShowForm(true);
+            setMethod("post");
           }}
         >
           Add A New Routine +
@@ -60,6 +62,7 @@ const UserRoutines = ({ activities }) => {
                 token={token}
                 setShowForm={setShowForm}
                 setType={setType}
+                setMethod={setMethod}
                 setEditFields={setEditFields}
                 editable={true}
               />
@@ -78,6 +81,7 @@ const UserRoutines = ({ activities }) => {
         onClose={() => {
           setShowForm(false);
           setEditFields("");
+          setMethod("");
           setType("routine");
         }}
       >
@@ -86,13 +90,15 @@ const UserRoutines = ({ activities }) => {
           <RoutineForm
             token={token}
             setShow={setShowForm}
-            routine={editField}
-            method={Object.keys(editField).length !== 0 ? "patch" : "post"}
+            editField={editField}
+            setEditFields={setEditFields}
+            method={method}
           />
         ) : (
           <RoutineActivityForm
             editField={editField}
             activities={activities}
+            method={method}
             token={token}
           />
         )}

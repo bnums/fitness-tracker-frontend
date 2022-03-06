@@ -12,6 +12,7 @@ const RoutineActivity = ({
   const [active, setActive] = useState("");
   const [height, setHeight] = useState("0px");
   const [rotate, setRotate] = useState("chevron-icon");
+
   const toggleAccordian = () => {
     setActive(active === "" ? "active" : "");
     setHeight(active === "active" ? "0px" : `300px`);
@@ -21,6 +22,7 @@ const RoutineActivity = ({
     setShowForm(true);
     setType("activity");
     setEditFields({
+      name: activity.name,
       activityId: activity.id,
       routineActivityId: activity.routineActivityId,
       count: activity.count,
@@ -57,7 +59,12 @@ const RoutineActivity = ({
             >
               Edit
             </button>
-            <div className="routine-activity-delete-button">Delete</div>
+            {/* <div
+              className="routine-activity-delete-button"
+              onClick={handleDelete(activity.routineActivityId, token)}
+            >
+              Delete
+            </div> */}
           </div>
         ) : null}
       </div>

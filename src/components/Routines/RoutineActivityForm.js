@@ -53,21 +53,25 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
   return (
     <>
       <form onSubmit={handleAdd}>
-        <label className="activity-name-label">Activity Name:</label>
-        <select
-          value={activityId}
-          onChange={(e) => {
-            setActivityId(e.target.value);
-          }}
-        >
-          {activities.map((activity) => {
-            return (
-              <option value={activity.id} key={activity.id}>
-                {activity.name}
-              </option>
-            );
-          })}
-        </select>
+        {editField.name ? null : (
+          <label className="activity-name-label">
+            Activity Name:
+            <select
+              value={activityId}
+              onChange={(e) => {
+                setActivityId(e.target.value);
+              }}
+            >
+              {activities.map((activity) => {
+                return (
+                  <option value={activity.id} key={activity.id}>
+                    {activity.name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        )}
         <label className="count-label">Count:</label>
         <input
           value={count}
@@ -80,7 +84,7 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
           type="number"
           onChange={(e) => setDuration(parseInt(e.target.value))}
         />
-        <button>+</button>
+        <button className="routine-form-button">+</button>
       </form>
       <div className="err-msg">
         <p aria-live="assertive">{errMsg}</p>

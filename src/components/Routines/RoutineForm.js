@@ -3,10 +3,10 @@ import { useMutation, useQueryClient } from "react-query";
 import { callApi } from "../../api";
 import "./RoutineForm.css";
 
-const RoutineForm = ({ token, routine, setShow, method }) => {
+const RoutineForm = ({ token, editField, setEditFields, setShow, method }) => {
   const blankRoutine = { name: "", goal: "", isPublic: false };
   const [routineFields, setRoutineFields] = useState(
-    Object.keys(routine).length !== 0 ? routine : blankRoutine
+    Object.keys(editField).length !== 0 ? editField : blankRoutine
   );
   const [errMsg, setErrMsg] = useState("");
   const queryClient = useQueryClient();
@@ -15,21 +15,40 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
       queryClient.invalidateQueries("getUserRoutines");
       setErrMsg("");
       setRoutineFields(blankRoutine);
+      setEditFields("");
       setShow(false);
     },
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     if (!routineFields.name || !routineFields.goal) {
       setErrMsg("Routines must have a name and goal!");
       return;
     }
     try {
       mutate({
-        url: method === "post" ? `/routines` : `/routines/${routine.id}`,
+        url:
+          method === "post"
+            ? `/routines`
+            : `/routines/${routineFields.routineId}`,
         method: method,
-        body: routineFields,
+        body: {
+          name: routineFields.name,
+          goal: routineFields.goal,
+          isPublic: routineFields.isPublic,
+        },
+        token,
+      });
+    } catch (error) {
+      setErrMsg(error.message);
+    }
+  };
+
+  const handleDelete = () => {
+    try {
+      mutate({
+        url: `/routines/${routineFields.routineId}`,
+        method: "delete",
         token,
       });
     } catch (error) {
@@ -39,7 +58,7 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
 
   return (
     <>
-      <form className="routine-form" onSubmit={handleSubmit}>
+      <form className="routine-form">
         <div>
           <label className="name-label">Routine Name:</label>
           <input
@@ -85,10 +104,15 @@ const RoutineForm = ({ token, routine, setShow, method }) => {
         <div className="err-msg">
           <p aria-live="assertive">{errMsg}</p>
         </div>
-        <footer className="buttons-container">
-          <button className="routine-form-button">Submit</button>
-        </footer>
       </form>
+      <footer className="buttons-container">
+        <button className="delete-routine-card-button" onClick={handleDelete}>
+          Delete
+        </button>
+        <button className="edit-activity-card-button" onClick={handleSubmit}>
+          Submit
+        </button>
+      </footer>
     </>
   );
 };
