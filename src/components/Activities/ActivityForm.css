@@ -1,4 +1,10 @@
-.edit-activity-label {
+.activity-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: left;
+}
+.activity-label {
   text-transform: capitalize;
   font-family: "Karla", sans-serif;
   font-size: 18px;
@@ -6,7 +12,7 @@
   font-weight: 400;
 }
 
-.edit-activity-input {
+.activity-input {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -17,7 +23,7 @@
   width: 100% auto;
 }
 
-.edit-activity-save-button {
+.activity-save-button {
   padding: 6px 24px;
   font-family: "Karla", sans-serif;
   font-size: 16px;
