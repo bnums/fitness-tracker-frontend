@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import RoutineActivity from "./RoutineActivity";
 import { callApi } from "../../api";
@@ -12,7 +11,6 @@ const RoutineSingle = ({
   token,
   setType,
 }) => {
-  const [routineId, setRoutineId] = useState(0);
   const queryClient = useQueryClient();
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
@@ -34,7 +32,7 @@ const RoutineSingle = ({
     setShowForm(true);
     setType("activity");
     setEditFields({
-      id: routine.id,
+      routineId: routine.id,
       name: routine.name,
       goal: routine.goal,
       isPublic: routine.isPublic,
@@ -52,7 +50,6 @@ const RoutineSingle = ({
       console.log(error);
     }
   };
-  console.log(routine);
 
   return (
     <>
@@ -65,13 +62,15 @@ const RoutineSingle = ({
               return (
                 <RoutineActivity
                   key={activity.id}
-                  routine={routine}
                   activity={activity}
+                  editable={editable}
+                  setShowForm={setShowForm}
+                  setEditFields={setEditFields}
+                  setType={setType}
                 />
               );
             })
           : null}
-
         {editable ? (
           <section>
             <button

@@ -1,18 +1,25 @@
 import { callApi } from "../../api";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
-const RoutineActivityForm = ({ routineId, activities }) => {
-  const [activityId, setActivityId] = useState(activities[0].id);
-  const [count, setCount] = useState(1);
-  const [duration, setDuration] = useState(1);
+const RoutineActivityForm = ({ editField, activities, token }) => {
+  const [activityId, setActivityId] = useState(
+    editField.activityId ? editField.activityId : activities[0].id
+  );
+  const [count, setCount] = useState(editField.count ? editField.count : 1);
+  const [duration, setDuration] = useState(
+    editField.duration ? editField.duration : 1
+  );
   const [errMsg, setErrMsg] = useState("");
+  const method = editField.routineActivityId ? "patch" : "post";
 
   const queryClient = useQueryClient();
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
       queryClient.invalidateQueries("getUserRoutines");
-      setErrMsg("Routine Successfully Added!");
+      method === "post"
+        ? setErrMsg("Routine successfully Added!")
+        : setErrMsg("Routine successfully Updated!");
     },
     onError: () => {
       setErrMsg("Activity is already on routine");
@@ -26,13 +33,17 @@ const RoutineActivityForm = ({ routineId, activities }) => {
     }
     try {
       mutate({
-        url: `/routines/${routineId}/activities`,
-        method: "post",
+        url:
+          method === "post"
+            ? `/routines/${editField.routineId}/activities`
+            : `/routine_activities/${editField.routineActivityId}`,
+        method: method,
         body: {
           activityId: activityId,
           count: count,
           duration: duration,
         },
+        token,
       });
     } catch (error) {
       setErrMsg("Activity is already on routine");

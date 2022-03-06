@@ -88,6 +88,7 @@
   align-self: left;
   text-decoration: none;
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 .routine-activity-delete-button {
@@ -102,4 +103,5 @@
   align-self: left;
   text-decoration: none;
   margin-right: 16px;
+  margin-bottom: 16px;
 }

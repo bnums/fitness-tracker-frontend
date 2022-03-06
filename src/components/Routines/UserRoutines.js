@@ -91,7 +91,7 @@ const UserRoutines = ({ activities }) => {
           />
         ) : (
           <RoutineActivityForm
-            routineId={editField.id}
+            editField={editField}
             activities={activities}
             token={token}
           />
