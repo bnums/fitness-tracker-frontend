@@ -46,7 +46,6 @@ const UserRoutines = ({ activities }) => {
             return (
               <RoutineSingle
                 key={routine.id}
-                user={user}
                 routine={routine}
                 token={token}
                 setShowForm={setShowForm}

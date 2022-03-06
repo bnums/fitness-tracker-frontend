@@ -25,6 +25,7 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
       });
       setErrMsg("");
       setRoutineFields(blankRoutine);
+      setShow(false);
     } catch (error) {
       setErrMsg(error.message);
     }

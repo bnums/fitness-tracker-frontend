@@ -1,28 +1,37 @@
 import RoutineActivity from "./RoutineActivity";
+import { callApi } from "../../api";
 import "./RoutineSingle.css";
-// import { callApi } from "../../api";
 
 const RoutineSingle = ({
-  token,
-  user,
   routine,
   setShowForm,
   setEditFields,
   editable,
+  token,
 }) => {
-  // const handleDelete = async () => {
-  //   try {
-  //     await callApi({
-  //       url: `/routines/${routine.id}`,
-  //       method: "delete",
-  //       token,
-  //     });
-  //     const filterRoutines = routines.filter((elem) => elem.id !== routine.id);
-  //     setRoutines(filterRoutines);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
+  const handleEdit = () => {
+    setShowForm(true);
+    setEditFields({
+      id: routine.id,
+      name: routine.name,
+      goal: routine.goal,
+      isPublic: routine.isPublic,
+    });
+  };
+
+  const handleDelete = async (routineId, token) => {
+    try {
+      await callApi({
+        url: `/routines/${routineId}`,
+        method: "delete",
+        token,
+      });
+      console.log("Activity Deleted");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="routine-card">
@@ -35,32 +44,19 @@ const RoutineSingle = ({
             })
           : null}
         {editable ? (
-          <div className="buttons-container">
-            {user === routine.creatorName ? (
-              <button
-                className="edit-activity-card-button"
-                onClick={() => {
-                  setShowForm(true);
-                  setEditFields({
-                    id: routine.id,
-                    name: routine.name,
-                    goal: routine.goal,
-                    isPublic: routine.isPublic,
-                  });
-                }}
-              >
-                Edit
-              </button>
-            ) : null}
-            {user === routine.creatorName ? (
-              <button
-                className="delete-routine-card-button"
-                // onClick={handleDelete}
-              >
-                Delete
-              </button>
-            ) : null}
-          </div>
+          <section className="buttons-container">
+            <button className="edit-activity-card-button" onClick={handleEdit}>
+              Edit
+            </button>
+            <button
+              className="delete-routine-card-button"
+              onClick={() => {
+                handleDelete(routine.id, token);
+              }}
+            >
+              Delete
+            </button>
+          </section>
         ) : null}
       </div>
     </>
