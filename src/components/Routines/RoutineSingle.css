@@ -32,11 +32,16 @@
 .username {
   text-transform: uppercase;
   font-family: "Karla", sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 24px;
   font-weight: 700;
   padding-bottom: 16px;
   color: #33536a;
+  transition: all 0.3s;
+}
+
+.username:hover {
+  letter-spacing: 1px;
 }
 
 .description {

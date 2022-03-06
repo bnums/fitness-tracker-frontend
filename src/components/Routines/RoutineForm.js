@@ -13,6 +13,7 @@ const RoutineForm = ({ token, editField, setEditFields, setShow, method }) => {
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
       queryClient.invalidateQueries("getUserRoutines");
+      queryClient.invalidateQueries("getPublicRoutines");
       setErrMsg("");
       setRoutineFields(blankRoutine);
       setEditFields("");

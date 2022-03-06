@@ -14,9 +14,11 @@ const Activities = ({ activities }) => {
   return (
     <>
       <h1 className="activities-header">Activities</h1>
-      <button className="add-activity-button" onClick={() => setShow(true)}>
-        Add A New Activity +
-      </button>
+      {token ? (
+        <button className="add-activity-button" onClick={() => setShow(true)}>
+          Add A New Activity +
+        </button>
+      ) : null}
       <div className="activities-cards">
         {activities.map((activity) => {
           return (
