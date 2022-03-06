@@ -2,14 +2,32 @@ import { useState } from "react";
 import Chevron from "../Chevron";
 import "./RoutineActivity.css";
 
-const RoutineActivity = ({ activity }) => {
+const RoutineActivity = ({
+  activity,
+  editable,
+  setShowForm,
+  setEditFields,
+  setType,
+}) => {
   const [active, setActive] = useState("");
   const [height, setHeight] = useState("0px");
   const [rotate, setRotate] = useState("chevron-icon");
+
   const toggleAccordian = () => {
     setActive(active === "" ? "active" : "");
     setHeight(active === "active" ? "0px" : `300px`);
     setRotate(active === "active" ? "chevron-icon" : "chevron-icon rotate");
+  };
+  const handleEdit = () => {
+    setShowForm(true);
+    setType("activity");
+    setEditFields({
+      name: activity.name,
+      activityId: activity.id,
+      routineActivityId: activity.routineActivityId,
+      count: activity.count,
+      duration: activity.duration,
+    });
   };
 
   return (
@@ -33,15 +51,22 @@ const RoutineActivity = ({ activity }) => {
         <div className="routine-activity-duration">
           Duration: {activity.duration}
         </div>
-        {/* <div className="routine-activity-buttons">
-          <button
-            className="routine-activity-edit-button"
-            onClick={() => console.log("working")}
-          >
-            Edit
-          </button>
-          <div className="routine-activity-delete-button">Delete</div>
-        </div> */}
+        {editable ? (
+          <div className="buttons-container">
+            <button
+              className="routine-activity-edit-button"
+              onClick={handleEdit}
+            >
+              Edit
+            </button>
+            {/* <div
+              className="routine-activity-delete-button"
+              onClick={handleDelete(activity.routineActivityId, token)}
+            >
+              Delete
+            </div> */}
+          </div>
+        ) : null}
       </div>
     </div>
   );

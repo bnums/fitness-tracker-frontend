@@ -7,6 +7,7 @@ import RoutineForm from "./RoutineForm";
 import useAuth from "../../hooks/useAuth";
 import Modal from "../Modal";
 import "./UserRoutines.css";
+import RoutineActivityForm from "./RoutineActivityForm";
 
 const UserRoutines = ({ activities }) => {
   const {
@@ -15,6 +16,9 @@ const UserRoutines = ({ activities }) => {
   } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editField, setEditFields] = useState({});
+  const [type, setType] = useState("routine");
+  const [method, setMethod] = useState("");
+  const title = editField.name ? editField.name : "Add A New Routine";
 
   const fetchUserRoutines = async () => {
     try {
@@ -40,7 +44,10 @@ const UserRoutines = ({ activities }) => {
         <div className="user-routines-header">Your Routines</div>
         <button
           className="add-routine-button"
-          onClick={() => setShowForm(true)}
+          onClick={() => {
+            setShowForm(true);
+            setMethod("post");
+          }}
         >
           Add A New Routine +
         </button>
@@ -54,6 +61,8 @@ const UserRoutines = ({ activities }) => {
                 routine={routine}
                 token={token}
                 setShowForm={setShowForm}
+                setType={setType}
+                setMethod={setMethod}
                 setEditFields={setEditFields}
                 editable={true}
               />
@@ -68,23 +77,31 @@ const UserRoutines = ({ activities }) => {
       </div>
       <Modal
         show={showForm}
-        title={
-          Object.keys(editField).length !== 0
-            ? editField.name
-            : "Add A New Routine"
-        }
+        title={title}
         onClose={() => {
           setShowForm(false);
           setEditFields("");
+          setMethod("");
+          setType("routine");
         }}
       >
-        <RoutineForm
-          token={token}
-          setShow={setShowForm}
-          routine={editField}
-          method={Object.keys(editField).length !== 0 ? "patch" : "post"}
-          activities={activities}
-        />
+        {" "}
+        {type === "routine" ? (
+          <RoutineForm
+            token={token}
+            setShow={setShowForm}
+            editField={editField}
+            setEditFields={setEditFields}
+            method={method}
+          />
+        ) : (
+          <RoutineActivityForm
+            editField={editField}
+            activities={activities}
+            method={method}
+            token={token}
+          />
+        )}
       </Modal>
     </>
   );
