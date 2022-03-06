@@ -9,6 +9,7 @@ const RoutineSingle = ({
   setEditFields,
   editable,
   token,
+  setType,
 }) => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation(callApi, {
@@ -19,6 +20,17 @@ const RoutineSingle = ({
 
   const handleEdit = () => {
     setShowForm(true);
+    setEditFields({
+      id: routine.id,
+      name: routine.name,
+      goal: routine.goal,
+      isPublic: routine.isPublic,
+    });
+  };
+
+  const handleRoutineActivity = () => {
+    setShowForm(true);
+    setType("activity");
     setEditFields({
       id: routine.id,
       name: routine.name,
@@ -50,19 +62,31 @@ const RoutineSingle = ({
               return <RoutineActivity key={activity.id} activity={activity} />;
             })
           : null}
+
         {editable ? (
-          <section className="buttons-container">
-            <button className="edit-activity-card-button" onClick={handleEdit}>
-              Edit
-            </button>
+          <section>
             <button
-              className="delete-routine-card-button"
-              onClick={() => {
-                handleDelete(routine.id, token);
-              }}
+              className="add-routine-activity"
+              onClick={handleRoutineActivity}
             >
-              Delete
+              Add A Routine Activity +
             </button>
+            <div className="buttons-container">
+              <button
+                className="edit-activity-card-button"
+                onClick={handleEdit}
+              >
+                Edit
+              </button>
+              <button
+                className="delete-routine-card-button"
+                onClick={() => {
+                  handleDelete(routine.id, token);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </section>
         ) : null}
       </div>

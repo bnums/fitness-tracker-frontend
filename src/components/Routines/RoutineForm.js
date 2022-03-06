@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { callApi } from "../../api";
-import RoutineActivityForm from "./RoutineActivityForm";
 import "./RoutineForm.css";
 
-const RoutineForm = ({ token, routine, setShow, method, activities }) => {
+const RoutineForm = ({ token, routine, setShow, method }) => {
   const blankRoutine = { name: "", goal: "", isPublic: false };
   const [routineFields, setRoutineFields] = useState(
     Object.keys(routine).length !== 0 ? routine : blankRoutine
@@ -86,16 +85,10 @@ const RoutineForm = ({ token, routine, setShow, method, activities }) => {
         <div className="err-msg">
           <p aria-live="assertive">{errMsg}</p>
         </div>
-        <button className="routine-form-button">Submit</button>
+        <footer className="buttons-container">
+          <button className="routine-form-button">Submit</button>
+        </footer>
       </form>
-      {method === "patch" ? (
-        <RoutineActivityForm
-          routineId={routineFields.id}
-          activities={activities}
-          token={token}
-          setErrMsg={setErrMsg}
-        />
-      ) : null}
     </>
   );
 };

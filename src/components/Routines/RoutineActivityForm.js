@@ -2,16 +2,20 @@ import { callApi } from "../../api";
 import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
-const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
+const RoutineActivityForm = ({ routineId, activities }) => {
   const [activityId, setActivityId] = useState(activities[0].id);
-  const [count, setCount] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [count, setCount] = useState(1);
+  const [duration, setDuration] = useState(1);
+  const [errMsg, setErrMsg] = useState("");
 
   const queryClient = useQueryClient();
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
       queryClient.invalidateQueries("getUserRoutines");
       setErrMsg("Routine Successfully Added!");
+    },
+    onError: () => {
+      setErrMsg("Activity is already on routine");
     },
   });
 
@@ -34,11 +38,6 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
       setErrMsg("Activity is already on routine");
     }
   };
-
-  useEffect(() => {
-    setErrMsg("");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activityId, count, duration]);
 
   return (
     <>
@@ -72,6 +71,9 @@ const RoutineActivityForm = ({ routineId, activities, setErrMsg }) => {
         />
         <button>+</button>
       </form>
+      <div className="err-msg">
+        <p aria-live="assertive">{errMsg}</p>
+      </div>
     </>
   );
 };

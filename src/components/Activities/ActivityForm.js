@@ -56,7 +56,9 @@ const ActivityForm = ({ token, activity }) => {
           setFields({ ...fields, description: e.target.value });
         }}
       />
-      <button className="activity-save-button">Submit</button>
+      <footer className="buttons-container">
+        <button className="activity-save-button">Submit</button>
+      </footer>
     </form>
   );
 };
