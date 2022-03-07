@@ -1,0 +1,81 @@
+.activities-header {
+  font-family: "Karla", sans-serif;
+  font-size: 64px;
+  line-height: 74px;
+  font-weight: 700;
+  margin: 96px 0px 32px 0px;
+  text-align: center;
+  color: #000c23;
+}
+
+.activities-cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 96px;
+}
+
+.activity-card {
+  margin: 16px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid #d0d0d0;
+  width: 300px;
+  min-height: 200px;
+  height: fit-content;
+  background-color: #fff;
+}
+
+.activity-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.activity-description {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 300;
+}
+
+.add-activity-button {
+  margin-top: 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  color: #1161ff;
+  text-align: center;
+  background-color: inherit;
+  border: none;
+}
+
+.add-activity-button:hover {
+  transform: translateY(-0.25em);
+}
+
+.edit-activity-card-button {
+  margin: 24px 0px 0px 0px;
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .activities-header {
+    font-size: 40px;
+    line-height: 54px;
+  }
+}

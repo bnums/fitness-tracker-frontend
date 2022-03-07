@@ -1,0 +1,39 @@
+.activity-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: left;
+}
+.activity-label {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.activity-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  margin: 4px 4px 8px 4px;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  width: 100% auto;
+}
+
+.activity-save-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+  width: fit-content;
+}

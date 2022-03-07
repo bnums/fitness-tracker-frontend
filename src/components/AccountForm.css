@@ -1,0 +1,133 @@
+.account-form-container {
+  display: flex;
+  justify-content: center;
+  width: 100% auto;
+  margin: 0px 16px;
+}
+
+.account-form {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 20vh 0 40vh 0;
+}
+
+.account-form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form-content {
+  background-color: #fff;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+}
+
+.account-form-header {
+  font-family: "Karla", sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  margin: 0px 0px 32px 0px;
+}
+
+.account-form-username-container {
+  margin: 0px 0px 8px 0px;
+}
+
+.account-form-username {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form-username-label {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 4px 0px 0px 0px;
+}
+
+.account-form-username-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  margin: 4px 0px 8px 0px;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  padding-left: 4px;
+}
+
+.account-form-password-container {
+  margin: 0px 0px 16px 0px;
+}
+
+.account-form-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form-password-label {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 4px 0px 0px 0px;
+}
+
+.account-form-password-input {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  margin: 4px 0px 0px 0px;
+  border: 1px solid #001b50;
+  border-radius: 2px;
+  padding-left: 4px;
+}
+
+.err-msg {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  margin: 0px 8px 0px 0px;
+  color: #ae1212;
+}
+
+.account-form-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.account-form-additional {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 32px 0px 0px 0px;
+}
+
+.account-form-path {
+  color: #1161ff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .account-form-content {
+    width: 100%;
+  }
+}

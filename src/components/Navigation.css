@@ -1,0 +1,168 @@
+.nav-bar-desktop {
+  padding-top: 24px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar-mobile {
+  display: none;
+}
+
+.routes-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.home {
+  font-family: "Karla", sans-serif;
+  font-size: 40px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 32px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+.my-routines {
+  font-family: "Karla", sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 32px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+.routines {
+  font-family: "Karla", sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 32px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+.activities {
+  font-family: "Karla", sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 32px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+.log-out {
+  font-family: "Karla", sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 40px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+.log-in-register {
+  font-family: "Karla", sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 0px 40px;
+  text-align: left;
+  text-decoration: none;
+  color: #001b50;
+}
+
+@media (max-width: 768px) {
+  .nav-bar-desktop {
+    display: none;
+  }
+
+  .nav-bar-mobile {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .mobile-routes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mobile-home {
+    font-family: "Karla", sans-serif;
+    font-size: 32px;
+    line-height: 50px;
+    font-weight: 700;
+    margin: 8px 16px;
+    text-align: left;
+    text-decoration: none;
+    color: #001b50;
+  }
+
+  .mobile-my-routines {
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    color: #001b50;
+  }
+
+  .mobile-routines {
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    color: #001b50;
+  }
+
+  .mobile-activities {
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    color: #001b50;
+  }
+
+  .mobile-log-out {
+    font-family: "Karla", sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 8px 16px;
+    text-align: right;
+    text-decoration: none;
+    color: #001b50;
+  }
+
+  .mobile-log-in-register {
+    font-family: "Karla", sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 8px 16px;
+    text-align: right;
+    text-decoration: none;
+    color: #001b50;
+  }
+}

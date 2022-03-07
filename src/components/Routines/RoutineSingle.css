@@ -1,0 +1,103 @@
+.routines-cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 96px;
+}
+
+.routine-card {
+  margin: 16px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid #d0d0d0;
+  width: 400px;
+  min-height: fit-content;
+  height: fit-content;
+  min-height: 300px;
+  background-color: #fff;
+}
+
+.routine-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  color: #000c23;
+}
+
+.username {
+  text-transform: uppercase;
+  font-family: "Karla", sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 700;
+  padding-bottom: 16px;
+  color: #33536a;
+  transition: all 0.3s;
+}
+
+.username:hover {
+  letter-spacing: 1px;
+}
+
+.description {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 300;
+  margin-bottom: 22px;
+  color: #000c23;
+}
+
+.add-routine-activity {
+  margin-top: 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  border: none;
+  background-color: inherit;
+  color: #1161ff;
+  transition: all 0.25s;
+}
+.add-routine-activity:hover {
+  letter-spacing: 1px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.edit-routine-card-button {
+  margin: 24px 0px 0px 0px;
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+}
+
+.delete-routine-card-button {
+  margin: 24px 0px 0px 24px;
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #001b50;
+  border: 1px solid #d0d0d0;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+}

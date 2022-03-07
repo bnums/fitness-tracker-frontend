@@ -1,0 +1,107 @@
+.routine-activity-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeeee;
+  margin: 4px 4px 16px 4px;
+}
+
+.routine-activity-toggle:hover,
+.active {
+  background-color: #cfcfcf;
+}
+
+.routine-activity-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  transition: background-color 0.6s ease;
+}
+
+.routine-activity-name {
+  text-transform: capitalize;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  padding-bottom: 0px;
+}
+
+.chevron-icon {
+  margin-left: auto;
+  transition: transform 0.6s ease;
+}
+
+.rotate {
+  transform: rotate(-90deg);
+}
+
+.routine-activity-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+
+.routine-activity-description {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 300;
+  margin: 8px 0px 4px 14px;
+}
+
+.routine-activity-count {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  padding-bottom: 0px;
+  margin: 8px 0px 0px 14px;
+}
+
+.routine-activity-duration {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  margin: 4px 0px 4px 14px;
+  margin-bottom: 24px;
+}
+
+.routine-activity-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.routine-activity-edit-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #001b50;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.routine-activity-delete-button {
+  padding: 6px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #001b50;
+  border: none;
+  display: flex;
+  align-self: left;
+  text-decoration: none;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}

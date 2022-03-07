@@ -1,0 +1,19 @@
+.footer {
+  padding: 104px 16px;
+  background-color: #000c23;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 8px 24px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
