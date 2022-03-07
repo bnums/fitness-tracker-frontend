@@ -97,9 +97,11 @@ const RoutineActivityForm = ({ editField, activities, token }) => {
         />
       </form>
       <footer className="buttons-container">
-        <button className="delete-routine-card-button" onClick={handleDelete}>
-          Delete
-        </button>
+        {method === "post" ? null : (
+          <button className="delete-routine-card-button" onClick={handleDelete}>
+            Delete
+          </button>
+        )}
         <button className="edit-activity-card-button" onClick={handleSubmit}>
           Submit
         </button>

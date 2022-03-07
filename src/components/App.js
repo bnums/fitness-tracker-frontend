@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { callApi } from "../api";
 import useAuth from "../hooks/useAuth";
@@ -55,6 +55,7 @@ function App() {
           element={<UserRoutines activities={activities} />}
         />
         <Route path="/routines/all" element={<PublicRoutines />} />
+        <Route path="/routines/all/:creatorName" element={<PublicRoutines />} />
         <Route
           path="/activities"
           element={<Activities activities={activities} />}

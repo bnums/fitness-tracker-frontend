@@ -18,7 +18,6 @@ const UserRoutines = ({ activities }) => {
   const [editField, setEditFields] = useState({});
   const [type, setType] = useState("routine");
   const [method, setMethod] = useState("");
-  const title = editField.name ? editField.name : "Add A New Routine";
 
   const fetchUserRoutines = async () => {
     try {
@@ -77,7 +76,11 @@ const UserRoutines = ({ activities }) => {
       </div>
       <Modal
         show={showForm}
-        title={title}
+        title={
+          editField.name
+            ? editField.name
+            : "Add A New Routine/ Routine Activity"
+        }
         onClose={() => {
           setShowForm(false);
           setEditFields("");
@@ -100,6 +103,7 @@ const UserRoutines = ({ activities }) => {
             activities={activities}
             method={method}
             token={token}
+            userRoutines={userRoutines}
           />
         )}
       </Modal>

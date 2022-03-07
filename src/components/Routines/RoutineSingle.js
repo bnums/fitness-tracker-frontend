@@ -1,4 +1,5 @@
 import RoutineActivity from "./RoutineActivity";
+import { useNavigate } from "react-router";
 import "./RoutineSingle.css";
 
 const RoutineSingle = ({
@@ -9,6 +10,7 @@ const RoutineSingle = ({
   setMethod,
   setType,
 }) => {
+  const navigate = useNavigate();
   const handleEdit = () => {
     setShowForm(true);
     setMethod("patch");
@@ -35,7 +37,12 @@ const RoutineSingle = ({
     <>
       <div className="routine-card">
         <div className="routine-name">{routine.name}</div>
-        <div className="username">Created by {routine.creatorName}</div>
+        <div
+          className="username"
+          onClick={() => navigate(`/routines/all/${routine.creatorName}`)}
+        >
+          Created by {routine.creatorName}
+        </div>
         <div className="description">Goal: {routine.goal}</div>
         {routine.activities && routine.activities.length
           ? routine.activities.map((activity) => {

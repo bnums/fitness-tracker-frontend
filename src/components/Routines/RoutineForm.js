@@ -13,6 +13,7 @@ const RoutineForm = ({ token, editField, setEditFields, setShow, method }) => {
   const { mutate } = useMutation(callApi, {
     onSuccess: () => {
       queryClient.invalidateQueries("getUserRoutines");
+      queryClient.invalidateQueries("getPublicRoutines");
       setErrMsg("");
       setRoutineFields(blankRoutine);
       setEditFields("");
@@ -106,9 +107,11 @@ const RoutineForm = ({ token, editField, setEditFields, setShow, method }) => {
         </div>
       </form>
       <footer className="buttons-container">
-        <button className="delete-routine-card-button" onClick={handleDelete}>
-          Delete
-        </button>
+        {method === "post" ? null : (
+          <button className="delete-routine-card-button" onClick={handleDelete}>
+            Delete
+          </button>
+        )}
         <button className="edit-activity-card-button" onClick={handleSubmit}>
           Submit
         </button>
